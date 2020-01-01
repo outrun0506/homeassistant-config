@@ -1,0 +1,97 @@
+- alias: alexa_fernsehen
+  trigger:
+    platform: state
+    entity_id: input_boolean.fernsehen
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Fernsehen"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.fernsehen
+
+- alias: alexa_ps4
+  trigger:
+    platform: state
+    entity_id: input_boolean.ps4
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "PS4"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.PS4
+
+- alias: alexa_switch
+  trigger:
+    platform: state
+    entity_id: input_boolean.switch
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Switch"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.switch
+
+- alias: alexa_kodi
+  trigger:
+    platform: state
+    entity_id: input_boolean.kodi
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Kodi"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.kodi
+
+- alias: alexa_heimkino_aus
+  trigger:
+    platform: state
+    entity_id: input_boolean.heimkino
+    to: "off"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Aus"
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.heimkino
+
+- alias: alexa_smarttv
+  trigger:
+    platform: state
+    entity_id: input_boolean.smarttv
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "Smart TV"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.smarttv
+
+- alias: alexa_firetv
+  trigger:
+    platform: state
+    entity_id: input_boolean.firetv
+    to: "on"
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.fernbedinung
+        option: "FireTV"
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.firetv

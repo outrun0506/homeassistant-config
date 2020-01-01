@@ -1,0 +1,64 @@
+- platform: yr
+
+- platform: mqtt
+  state_topic: 'sensor/wohnzimmer/dht22'
+  name: "Temperatur Wohnzimmer"
+  unit_of_measurement: '°C'
+  value_template: '{{ value_json.temperature }}'
+    
+- platform: mqtt
+  state_topic: 'sensor/wohnzimmer/dht22'
+  name: "Luftfeuchte Wohnzimmer"
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.humidity }}'
+
+- platform: mqtt
+  state_topic: 'sensor/esszimmer/dht22'
+  name: "Temperatur Esszimmer"
+  unit_of_measurement: '°C'
+  value_template: '{{ value_json.temperature }}'
+    
+- platform: mqtt
+  state_topic: 'sensor/esszimmer/dht22'
+  name: "Luftfeuchte Esszimmer"
+  unit_of_measurement: '%'
+  value_template: '{{ value_json.humidity }}'
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /
+    - type: memory_free
+    - type: processor_use
+    - type: last_boot
+
+- platform: wundergroundpws
+  api_key: !secret wunderground_api
+  pws_id: !secret  wunderground_station
+  lang: de-DE
+  monitored_conditions:
+    - temp
+    - dewpt
+    - heatIndex
+    - humidity
+    - pressure
+    - temp_high_1d
+    - temp_low_1d
+    - wind_1d
+    - weather_1d
+    - weather_1n
+    - temp_high_2d
+    - temp_low_2d
+    - wind_2d
+    - weather_2d
+    - weather_2n
+    - temp_high_3d
+    - temp_low_3d
+    - wind_3d
+    - weather_3d
+    - weather_3n
+    - temp_high_4d
+    - temp_low_4d
+    - wind_4d
+    - weather_4d
+    - weather_4n

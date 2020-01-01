@@ -1,0 +1,87 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+*.pid
+*.xml
+*.csr
+*.crt
+*.key
+ssl/*.pem
+.uuid
+OZW_Log.txt
+home-assistant.log
+backup
+home-assistant_v2.db
+*.db-journal
+lib
+deps
+tts
+/secrets.yaml
+known_devices.yaml
+*.conf
+plex.conf
+phue.conf
+harmony_media_room.conf
+pyozw.sqlite
+certselfsigned
+www/*.png
+*.ps1
+configurator.py
+settings.conf
+ps4-games.json
+readynas
+*.sh
+*.db*
+.vscode
+emulated_hue_ids.json
+.shopping_list.json
+.cloud
+.storage
+node-red
+!/.gitignore
+!/www

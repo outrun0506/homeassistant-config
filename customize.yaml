@@ -1,0 +1,215 @@
+sensor.speedtest_download:
+  icon: mdi:download
+sensor.speedtest_upload:
+  icon: mdi:upload
+sensor.speedtest_ping:
+  icon: mdi:timelapse
+switch.laptop:
+  icon: mdi:laptop-windows
+script.backupha:
+  icon: mdi:harddisk
+sensor.pws_temp_c:
+  icon: mdi:temperature-celsius
+  friendly_name: 'Temperatur:'
+sensor.pws_feelslike_c:
+  friendly_name: 'Gefühlte Temperatur:'
+sensor.pws_pressure_mb:
+  friendly_name: 'Luftdruck:'
+  icon: mdi:arrow-compress-all
+sensor.pws_relative_humidity:
+  friendly_name: 'Luftfeuchte:'
+  icon: mdi:water-percent
+sensor.pws_visibility_km:
+  friendly_name: 'Sichtweite:'
+  icon: mdi:tree
+sensor.pws_wind_dir:
+  friendly_name: 'Windrichtung:'
+  icon: mdi:weather-windy-variant
+sensor.pws_wind_kph:
+  friendly_name: Windstärke
+  icon: mdi:weather-windy
+sensor.pws_alerts:
+  friendly_name: Wetter Alarm
+  icon: mdi:traffic-light
+sensor.pws_weather:
+  friendly_name: 'Wetter:'
+binary_sensor.wii:
+  icon: mdi:wii
+binary_sensor.drucker:
+  icon: mdi:printer
+sensor.temperatur_wohnzimmer:
+  icon: mdi:temperature-celsius
+sensor.luftfeuchte_wohnzimmer:
+  icon: mdi:water-percent
+sensor.temperatur_esszimmer:
+  icon: mdi:temperature-celsius
+sensor.luftfeuchte_esszimmer:
+  icon: mdi:water-percent
+script.sender_hoch:
+  icon: mdi:arrow-up-bold-circle
+  emulated_hue: false
+script.sender_runter:
+  icon: mdi:arrow-down-bold-circle
+  emulated_hue: false
+switch.nas:
+  icon: mdi:server-network
+media_player.denon:
+  emulated_hue_name: Verstärker
+media_player.tv:
+  emulated_hue_name: Fernseher
+input_boolean.smarttv:
+  emulated_hue_name: Amazon
+script.vierareturn:
+  emulated_hue: false
+  icon: mdi:keyboard-return
+script.vieraenter:
+  emulated_hue: false
+  icon: mdi:arrow-right-bold-circle
+script.startamazonvideoapp:
+  emulated_hue: false
+input_number.helligkeit_tv_ambiente:
+  icon: mdi:brightness-6
+automation.strom_wohnzimmer_ein:
+  icon: mdi:power
+  friendly_name: Strom Wohzimmer automatisch ein
+automation.strom_wohnzimmer_aus:
+  icon: mdi:power
+  friendly_name: Strom Wohzimmer automatisch aus
+switch.neato_clean:
+  friendly_name: Saugen
+  icon: mdi:rotate-3d
+sensor.neato_battery:
+  friendly_name: Akkustand
+  icon: mdi:battery-charging
+sensor.neato_status:
+  friendly_name: Status
+  icon: mdi:pulse
+input_boolean.alarmanlage:
+  friendly_name: Alarmanlage
+  icon: mdi:pulse
+binary_sensor.frontdoor:
+  friendly_name: Haustüre
+binary_sensor.backdoor:
+  friendly_name: Türe hinten
+binary_sensor.motionlivingroom:
+  friendly_name: Bewegung Wohzimmer
+binary_sensor.bathroom_window:
+  friendly_name: Fenster Bad
+binary_sensor.wc_window:
+  friendly_name: Fenster WC
+input_boolean.power_living_room:
+  icon: mdi:power
+sensor.heizung_humidity:
+  friendly_name: Luftfeuchte Vorhaus
+  icon: mdi:water-percent
+sensor.heizung_temperature:
+  friendly_name: Temperatur Vorhaus
+  icon: mdi:temperature-celsius
+switch.waschmaschine:
+  icon: mdi:washing-machine
+sensor.waschmaschine_energy_power:
+  icon: mdi:flash-circle
+sensor.spannung_waschmaschine:
+  icon: mdi:flash-circle
+sensor.strom_waschmaschine:
+  icon: mdi:flash-circle
+sensor.gesamtverbrauch_waschmaschine:
+  icon: mdi:speedometer
+sensor.verbrauch_waschmaschine_heute:
+  icon: mdi:speedometer
+sensor.verbrauch_waschmaschine_gestern:
+  icon: mdi:speedometer
+script.tv_channel_down:
+  icon: mdi:arrow-down-bold-circle
+  emulated_hue_name: Sender runter
+script.tv_channel_up:
+  icon: mdi:arrow-up-bold-circle
+  emulated_hue_name: Sender hoch
+input_boolean.waschmaschine_aktiv:
+  icon: mdi:sync
+script.start_neato:
+  icon: mdi:roomba
+script.stop_neato:
+  icon: mdi:roomba
+script.dock_neato:
+  icon: mdi:roomba
+binary_sensor.neato:
+  icon: mdi:roomba
+sensor.outrun0506hassioconfig_state:
+  friendly_name: Travis Status
+switch.unifi_controller:
+  icon: mdi:wifi
+switch.docker_monitor:
+  icon: mdi:docker
+switch.reverse_proxy:
+  icon: mdi:security-network
+switch.home_assistant:
+  icon: mdi:home-assistant
+switch.node_red:
+  icon: mdi:nodejs
+switch.mqtt_server:
+  icon: mdi:server-plus
+switch.portainer:
+  icon: mdi:lifebuoy
+script.restart_hass:
+  icon: mdi:home-assistant
+script.restart_unifi:
+  icon: mdi:wifi
+script.restart_ha_dockermon:
+  icon: mdi:docker
+script.restart_revproxy:
+  icon: mdi:security-network
+script.restart_nodered:
+  icon: mdi:nodejs
+script.restart_mqtt:
+  icon: mdi:server-plus
+script.restart_portainer:
+  icon: mdi:lifebuoy
+script.bewegungsmelder_override:
+  icon: mdi:animation
+script.backdoor_override:
+  icon: mdi:door-closed
+light.bett:
+  icon: mdi:lightbulb-on-outline
+light.nachttischlampe:
+  icon: mdi:lightbulb-on-outline
+person.lukas:
+  entity_picture: /local/lukas.png
+person.sarah:
+  entity_picture: /local/sarah.png
+switch.pc:
+  icon: mdi:desktop-tower-monitor
+sensor.waschmaschine_energy_current:
+  icon: mdi:power-socket-de
+sensor.waschmaschine_energy_total:
+  icon: mdi:power-socket-de
+sensor.waschmaschine_energy_today:
+  icon: mdi:power-socket-de
+sensor.waschmaschine_energy_voltage:
+  icon: mdi:power-plug
+switch.christbaum:
+  icon: mdi:pine-tree
+switch.therme:
+  icon: mdi:radiator
+automation.schlafzimmer_licht_automatik_abend:
+  icon: mdi:weather-sunset-down
+automation.schlafzimmer_licht_automatik_morgen:
+  icon: mdi:mdi:weather-sunset-up
+script.1570735847756:
+  icon: mdi:window-closed
+script.1570735932758:
+  icon: mdi:window-closed
+script.1570735725911:
+  icon: mdi:door-closed
+sensor.mittagessen_heute:
+  icon: mdi:silverware-fork-knife
+sensor.mittagessen_morgen:
+  icon: mdi:silverware-fork-knife
+sensor.mittagessen_uebermorgen:
+  icon: mdi:silverware-fork-knife
+script.start_netflix:
+  icon: mdi:netflix
+script.stop_netflix:
+  icon: mdi:netflix
+switch.temp:
+  icon: mdi:lightbulb-on

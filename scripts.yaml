@@ -1,0 +1,95 @@
+tv_channel_up:
+  alias: Sender +
+  sequence:
+  - data:
+      payload: CH_UP
+      topic: tvcontrol
+    service: mqtt.publish
+
+tv_channel_down:
+  alias: Sender -
+  sequence:
+  - data:
+      payload: CH_DOWN
+      topic: tvcontrol
+    service: mqtt.publish
+
+bewegungsmelder_override:
+  alias: Bewegungsmelder override
+  sequence:
+  - data:
+      payload: 'off'
+      topic: home/433toMQTT
+    service: mqtt.publish
+
+backdoor_override:
+  alias: Tür hinten schließen
+  sequence:
+  - data:
+      payload: '11910670'
+      topic: home/433toMQTT
+    service: mqtt.publish
+
+goodnight:
+  alias: goodnight
+  sequence:
+  - service: switch.turn_off
+    entity_id: switch.nas
+  - delay: 00:03:00
+  - service: light.turn_off
+    entity_id: light.tv_ambiente
+  - service: switch.turn_off
+    entity_id: switch.mediacenter
+
+toggle_denon:
+  alias: toggle_denon
+  sequence:
+  - service_template: "{% if is_state(\"media_player.denon\", \"on\") %} \n  media_player.turn_off\n\
+      {%- else -%}\n  media_player.turn_on\n{% endif %}\n"
+    entity_id: media_player.denon
+
+toggle_tv:
+  alias: toggle_tv
+  sequence:
+    service_template: "{% if is_state(\"media_player.tv\", \"on\") %} \n  media_player.turn_off\n\
+      {%- else -%}\n  media_player.turn_on\n{% endif %}\n"
+    entity_id: media_player.tv
+
+'1570735725911':
+  alias: Haustüre schließen
+  sequence:
+  - data:
+      payload: '11762702'
+      topic: home/433toMQTT
+    service: mqtt.publish
+
+'1570735847756':
+  alias: Badfenster schließen
+  sequence:
+  - alias: ''
+    data:
+      payload: '11808526'
+      topic: home/433toMQTT
+    service: mqtt.publish
+
+'1570735932758':
+  alias: WC Fenster schließen
+  sequence:
+  - data:
+      payload: '11910670'
+      topic: home/433toMQTT
+    service: mqtt.publish
+
+start_netflix:
+  sequence:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.firetvstick
+      source: 'com.netflix.ninja'
+
+stop_netflix:
+  sequence:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.firetvstick
+      source: '!com.netflix.ninja'

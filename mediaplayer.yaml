@@ -1,0 +1,14 @@
+- platform: panasonic_viera
+  host: 192.168.0.86
+  port: 55000
+  name: TV
+  mac: "20:C6:EB:DF:C5:7A"
+
+- platform: denonavr
+  host: 192.168.0.150
+  name: Denon
+
+- platform: androidtv
+  name: FireTVStick
+  host: 192.168.0.74
+  adb_server_ip: 127.0.0.1

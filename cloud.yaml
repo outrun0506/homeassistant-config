@@ -1,0 +1,85 @@
+google_actions:
+    filter:
+      include_entities:
+        - light.tv_ambiente
+        - light.stehlampe
+        - light.bett
+        - switch.nas
+        - light.nachttischlampe
+        - switch.laptop
+        - switch.hifi_bluetooth
+        - input_boolean.fernsehen
+        - input_boolean.ps4
+        - input_boolean.switch
+        - input_boolean.bluetooth
+        - input_boolean.kodi
+        - input_boolean.heimkino
+        - input_boolean.firetv
+        - switch.waschmaschine
+        - switch.mediacenter
+        - switch.christbaum
+        - media_player.denon
+        - sensor.temperatur_wohnzimmer
+      # include_domains:
+      # exclude_entities:
+    entity_config:
+      light.bett:
+        name: Bett
+        room: schlafzimmer
+      light.tv_ambiente:
+        name: TV Ambiente
+        aliases:
+         - tv led
+         - fernseher led
+         - led fernseher
+        room: wohnzimmer
+      light.stehlampe:
+        name: Stehlampe
+        room: wohnzimmer
+      switch.nas:
+        name: NAS
+        room: wohnzimmer
+      light.nachttischlampe:
+        name: nachttischlampe
+        room: schlafzimmer
+      switch.laptop:
+        name: laptop
+        room: wohnzimmer
+      switch.hifi_bluetooth:
+        name: Hifi Bluetooth
+        room: wohnzimmer
+      input_boolean.ps4:
+        name: PS4
+        aliases:
+         - Playstation
+        room: wohnzimmer
+      input_boolean.kodi:
+        name: Kodi
+        room: wohnzimmer
+      input_boolean.heimkino:
+        name: Heimkino
+        room: wohnzimmer
+      input_boolean.firetv:
+        name: Fire TV
+        room: wohnzimmer
+      input_boolean.switch:
+        name: Switch
+        room: wohnzimmer
+      switch.waschmaschine:
+        name: Waschmaschine
+        room: Keller
+      switch.mediacenter:
+        name: Mediacenter
+        room: Wohnzimmer
+      media_player.denon:
+        name: Verstärker
+        aliases: Denon
+        room: Wohnzimmer
+      sensor.temperatur_wohnzimmer:
+        name: Temperatur Wohnzimmer
+      switch.christbaum:
+        name: Christbaum
+        room: esszimmer
+      switch.therme:
+        name: Therme
+        room: Keller

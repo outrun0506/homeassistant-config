@@ -1,0 +1,48 @@
+- alias: telegram_bot_commands
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/menü'
+  action:
+    - service: notify.telegramgroup
+      data:
+        message: 'Wie kann ich helfen'
+        data:
+          keyboard:
+            - '/Alarmanlage_ein_keiner_daheim'
+            - '/Alarmanlage_jemand_daheim'
+            - '/Alarmanlage_aus'
+            - '/Temperatur_abfragen'
+            - '/Strom_Wohnzimmer_aus'
+
+- alias: get_temperatur
+  trigger:
+     platform: event
+     event_type: telegram_command
+     event_data:
+       command: '/Temperatur_abfragen'
+  action:
+    service: notify.telegramgroup
+    data_template:
+      message: >
+        Temperatur im Wohnzimmer ist {{ states.sensor.temperatur_wohnzimmer.state }} °C, Temperatur im Esszimmer ist {{ states.sensor.temperatur_esszimmer.state }} °C, Draussen hat es  {{states.sensor.pws_temp_c.state }} °C
+
+- alias: 'Strom Wohnzimmer aus telegram action'
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/Strom_Wohnzimmer_aus'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.nas
+    - service: light.turn_off
+      entity_id: light.tv_ambiente
+    - delay: '00:03:00'
+    - service: switch.turn_off
+      entity_id: switch.mediacenter
+    - service: notify.telegramgroup
+      data_template:
+        message: >
+          Strom im Wohnzimmer wurde ausgeschaltet

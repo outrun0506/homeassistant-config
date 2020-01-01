@@ -1,0 +1,153 @@
+- alias: Aus
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Aus"
+  action:
+    - service: media_player.turn_off
+      entity_id: media_player.tv
+    - service: media_player.turn_off
+      entity_id: media_player.denon
+    - service: switch.turn_off
+      entity_id: switch.hifi_bluetooth
+
+- alias: Fernsehen
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Fernsehen"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: "TV AUDIO"
+    - service: mqtt.publish
+      data:
+        topic: tvcontrol
+        payload: TV
+    - service: switch.turn_off
+      entity_id: switch.hifi_bluetooth
+    - delay: '00:00:10'
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.volume_setpoint
+        value: 32
+
+- alias: PS4
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "PS4"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: GAME
+    - service: mqtt.publish
+      data:
+        topic: tvcontrol
+        payload: CHG_INPUT 
+    - service: switch.turn_off
+      entity_id: switch.hifi_bluetooth
+    - delay: '00:00:10'
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.volume_setpoint
+        value: 30
+
+- alias: Switch
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Switch"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: "DVD"
+    - service: mqtt.publish
+      data:
+        topic: tvcontrol
+        payload: CHG_INPUT 
+    - service: switch.turn_off
+      entity_id: switch.hifi_bluetooth
+    - delay: '00:00:10'
+    - service: input_number.set_value
+      data:
+        entity_id: input_number.volume_setpoint
+        value: 50
+
+- alias: PC
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Kodi"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: Blu-ray
+    - service: mqtt.publish
+      data:
+        topic: tvcontrol
+        payload: CHG_INPUT 
+    - service: switch.turn_off
+      entity_id: switch.hifi_bluetooth
+
+- alias: SmartTV
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "Smart TV"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: "TV AUDIO"
+    - service: mqtt.publish
+      data:
+        topic: tvcontrol
+        payload: APPS 
+    - service: switch.turn_off
+      entity_id: switch.hifi_bluetooth
+
+- alias: FireTV
+  trigger:
+    platform: state
+    entity_id: input_select.fernbedinung
+    to: "FireTV"
+  action:
+    - service: media_player.turn_on
+      entity_id: media_player.tv
+    - service: media_player.turn_on
+      entity_id: media_player.denon
+    - service: media_player.select_source
+      data:
+        entity_id: media_player.denon
+        source: "MEDIA PLAYER"
+    - service: mqtt.publish
+      data:
+        topic: tvcontrol
+        payload: CHG_INPUT 
+    - service: switch.turn_off
+      entity_id: switch.hifi_bluetooth

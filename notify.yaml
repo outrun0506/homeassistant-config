@@ -1,0 +1,14 @@
+- name: telegramgroup
+  platform: telegram
+  api_key: !secret telegram_api_password_lukas
+  chat_id: !secret telegram_chat_id_group
+
+- name: lukas_telegram
+  platform: telegram
+  api_key: !secret telegram_api_password_lukas
+  chat_id: !secret telegram_chat_id_lukas
+
+- name: firetv
+  platform: nfandroidtv
+  host: 192.168.0.74
+  position: top-left

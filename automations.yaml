@@ -1,0 +1,65 @@
+- id: '1567669150763'
+  alias: Reset_PowerOff_LivingRoom
+  trigger:
+  - at: '22:30'
+    platform: time
+  condition: []
+  action:
+  - data:
+      entity_id: input_boolean.power_living_room
+    service: input_boolean.turn_on
+- id: '1570733802726'
+  alias: Notify Therme Aus
+  trigger:
+  - entity_id: switch.therme
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      message: Bitte kontrolliere warum.
+      title: Therme ist aus!
+    service: notify.mobile_app_sm_a405fn
+  - data:
+      message: Bitte kontrolliere warum.
+      title: Therme ist aus!
+    service: notify.mobile_app_mi_a3
+- id: '1570737706783'
+  alias: Power state on HA start-up
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      payload: ' '
+      topic: sonoffs/cmnd/state
+    service: mqtt.publish
+- id: '1576347984924'
+  alias: Notify when Sarah is at Billa
+  description: ''
+  trigger:
+  - entity_id: person.sarah
+    event: enter
+    platform: zone
+    zone: zone.billa
+  condition: []
+  action:
+  - data:
+      message: "Du bist gerade bei Billa, bitte schau nach ob wir noch was von der Einkaufsliste brauchen!"
+      title: Einkaufliste kontrollieren!
+    service: notify.mobile_app_mi_a3
+- id: '1576347984925'
+  alias: Notify when Lukas is at Billa
+  description: ''
+  trigger:
+  - entity_id: person.lukas
+    event: enter
+    platform: zone
+    zone: zone.billa
+  condition: []
+  action:
+  - data:
+      message: "Du bist gerade bei Billa, bitte schau nach ob wir noch was von der Einkaufsliste brauchen!"
+      title: Einkaufliste kontrollieren!
+    service: notify.mobile_app_sm_a405fn

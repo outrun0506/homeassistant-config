@@ -1,0 +1,46 @@
+- alias: washmachine_finished
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.waschmaschine_energy_power
+    below: 10.00
+    for:
+      minutes: 10
+  condition:
+    condition: state
+    entity_id: input_boolean.waschmaschine_aktiv
+    state: 'on'
+  action:
+    - service: notify.mobile_app_sm_a405fn
+      data_template:
+        message: "Räum mich bitte aus"
+        title: "Waschmaschine ist fertig"
+    - service: notify.mobile_app_mi_a3
+      data_template:
+        message: "Räum mich bitte aus"
+        title: "Waschmaschine ist fertig"
+    - service: notify.firetv
+      data: 
+        message: "Waschmaschine ist fertig. Räum mich bitte aus"
+    - service: tts.google_say
+      entity_id: media_player.esszimmer
+      data:
+        message: 'Waschmaschine ist fertig. Räum micht bitte aus'
+    - service: tts.google_say
+      entity_id: media_player.wohnzimmer
+      data:
+        message: 'Waschmaschine ist fertig. Räum micht bitte aus'
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.waschmaschine_aktiv
+
+- alias: washmachine_running
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.waschmaschine_energy_power
+    above: 200
+    for:
+      seconds: 5
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.waschmaschine_aktiv

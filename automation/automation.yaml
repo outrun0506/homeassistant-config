@@ -1,0 +1,57 @@
+- alias: 'Bewegung Wohnzimmer aus'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motionlivingroom
+    to: 'on'
+    for:
+      seconds: 30
+  action:
+    service: mqtt.publish
+    data:
+      topic: 'home/433toMQTT'
+      payload: 'off'
+      retain: 'true'
+
+- alias: 'Set Theme'
+  trigger:
+    platform: state
+    entity_id: input_select.current_theme
+  action:
+    service: frontend.set_theme
+    data_template:
+      name: '{{states.input_select.current_theme.state}}'
+
+- alias: 'Schlafzimmer Licht Automatik Abend'
+  trigger:
+    platform: state
+    entity_id: media_player.tv
+    to: 'off'
+  condition:
+    condition: time
+    after: '21:30:00'
+    before: '04:00:00'
+  action: 
+    - service: light.turn_on
+      entity_id: light.bett
+    - service: light.turn_on
+      entity_id: light.nachttischlampe
+    - delay: '00:05:00'
+    - service: light.turn_off
+      entity_id: light.bett
+    - service: light.turn_off
+      entity_id: light.nachttischlampe
+
+- alias: 'Schlafzimmer Licht Automatik Morgen'
+  trigger:
+    platform: time
+    at: '06:00:00'
+  action: 
+    - service: light.turn_on
+      entity_id: light.bett
+    - service: light.turn_on
+      entity_id: light.nachttischlampe
+    - delay: '00:20:00'
+    - service: light.turn_off
+      entity_id: light.bett
+    - service: light.turn_off
+      entity_id: light.nachttischlampe

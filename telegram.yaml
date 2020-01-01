@@ -1,0 +1,7 @@
+platform: polling
+api_key: !secret telegram_api_password_lukas
+url: https://ha.ecklmayr.eu
+allowed_chat_ids:
+  - !secret telegram_chat_id_lukas
+  - !secret telegram_chat_id_group
+  - !secret telegram_chat_id_sarah

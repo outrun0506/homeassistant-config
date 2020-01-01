@@ -1,0 +1,51 @@
+front_door:
+  name: "Haustüre ist offen"
+  done_message: "Haustüre ist jetzt geschlossen"
+  entity_id: binary_sensor.frontdoor
+  state: 'on'
+  repeat:
+    - 5
+    - 60
+  can_acknowledge: True
+  skip_first: True
+  notifiers:
+    - mobile_app_mi_a3
+    - mobile_app_sm_a405fn
+
+back_door:
+  name: "Türe Hinten ist offen"
+  done_message: "Türe Hinten ist jetzt geschlossen"
+  entity_id: binary_sensor.backdoor
+  state: 'on'
+  repeat:
+    - 5
+    - 60
+  can_acknowledge: True
+  skip_first: True
+  notifiers:
+    - mobile_app_mi_a3
+    - mobile_app_sm_a405fn
+
+bath_windows:
+  name: "Badezimmer Fenster ist offen"
+  done_message: "Badezimmer Fenster ist jetzt geschlossen"
+  entity_id: binary_sensor.bathroom_window
+  state: 'on'
+  repeat: 60
+  can_acknowledge: True
+  skip_first: True
+  notifiers:
+    - mobile_app_mi_a3
+    - mobile_app_sm_a405fn
+
+wc_windows:
+  name: "WC Fenster ist offen"
+  done_message: "WC Fenster ist jetzt geschlossen"
+  entity_id: binary_sensor.wc_window
+  state: 'on'
+  repeat: 60
+  can_acknowledge: True
+  skip_first: True
+  notifiers:
+    - mobile_app_mi_a3
+    - mobile_app_sm_a405fn

@@ -1,0 +1,19 @@
+- platform: wake_on_lan
+  mac: "44-94-FC-6E-61-92"
+  name: "NAS"
+  host: 192.168.0.1
+  turn_off:
+    service: hassio.addon_stdin
+    data:
+      addon: a0d7b954_ssh
+      input: /config/shellscripts/nasoff.sh
+
+- platform: wake_on_lan
+  mac: "00-D8-61-9E-B5-DA"
+  name: "PC"
+  host: 192.168.0.83
+  turn_off:
+    service: hassio.addon_stdin
+    data:
+      addon: core_rpc_shutdown
+      input: desktop
