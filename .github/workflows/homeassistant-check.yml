@@ -23,7 +23,7 @@ jobs:
       - name: Home Assistant Check
         uses: "docker://homeassistant/home-assistant:stable"
         with:
-          args: python -m homeassistant --config ./configuration.yaml --script check_config --files --secrets --info all
+          args: python -m homeassistant --config .\ --script check_config --files --secrets --info all
   home_assistant_beta:
     runs-on: ubuntu-latest
     steps: 
@@ -39,4 +39,4 @@ jobs:
       - name: Home Assistant Check
         uses: "docker://homeassistant/home-assistant:beta"
         with:
-          args: python -m homeassistant --config ./configuration.yaml --script check_config --files --secrets --info all
+          args: python -m homeassistant --config .\ --script check_config --files --secrets --info all
