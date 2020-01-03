@@ -19,7 +19,7 @@
   - data:
       message: Bitte kontrolliere warum.
       title: Therme ist aus!
-    service: notify.mobile_app_sm_a405fn
+    service: notify.mobile_app_lukassa40
   - data:
       message: Bitte kontrolliere warum.
       title: Therme ist aus!
@@ -62,4 +62,4 @@
   - data:
       message: "Du bist gerade bei Billa, bitte schau nach ob wir noch was von der Einkaufsliste brauchen!"
       title: Einkaufliste kontrollieren!
-    service: notify.mobile_app_sm_a405fn
+    service: notify.mobile_app_lukassa40

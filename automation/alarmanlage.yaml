@@ -20,7 +20,7 @@
       entity_id: alarm_control_panel.ha_alarm
       state: 'armed_away'
   action:
-    - service: device_tracker.lukas_a40
+    - service: notify.mobile_app_lukassa40
       data:
         message: "ALARM wurde ausgelöst!"
         title: "Achtung"
@@ -48,7 +48,7 @@
       entity_id: alarm_control_panel.ha_alarm
       state: 'armed_home'
   action:
-    - service: device_tracker.lukas_a40
+    - service: notify.mobile_app_lukassa40
       data:
         message: "ALARM wurde ausgelöst!"
         title: "Achtung"

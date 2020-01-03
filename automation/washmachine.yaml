@@ -10,7 +10,7 @@
     entity_id: input_boolean.waschmaschine_aktiv
     state: 'on'
   action:
-    - service: notify.mobile_app_sm_a405fn
+    - service: notify.mobile_app_lukassa40
       data_template:
         message: "Räum mich bitte aus"
         title: "Waschmaschine ist fertig"

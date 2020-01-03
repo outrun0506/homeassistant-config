@@ -46,6 +46,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+__pycache__
 *.pid
 *.xml
 *.csr
