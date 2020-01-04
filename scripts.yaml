@@ -38,6 +38,8 @@ goodnight:
   - delay: 00:03:00
   - service: light.turn_off
     entity_id: light.tv_ambiente
+  - service: light.turn_off
+    entity_id: light.stehlampe
   - service: switch.turn_off
     entity_id: switch.mediacenter
 
@@ -66,7 +68,6 @@ toggle_tv:
 '1570735847756':
   alias: Badfenster schließen
   sequence:
-  - alias: ''
     data:
       payload: '11808526'
       topic: home/433toMQTT
@@ -80,13 +81,20 @@ toggle_tv:
       topic: home/433toMQTT
     service: mqtt.publish
 
-start_netflix:
+netflix:
   sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.firetvstick
+  - service: input_select.select_option
+    data:
+     entity_id: input_select.fernbedinung
+     option: 'FireTV'
   - service: media_player.select_source
     data:
       entity_id: media_player.firetvstick
       source: 'com.netflix.ninja'
 
+# Voicecommand is issued via IFTTT Webhook and Google Home
 stop_netflix:
   sequence:
   - service: media_player.select_source

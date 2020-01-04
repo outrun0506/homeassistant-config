@@ -210,6 +210,10 @@ sensor.mittagessen_uebermorgen:
 script.start_netflix:
   icon: mdi:netflix
 script.stop_netflix:
+  friendly_name: Netflix stoppen
   icon: mdi:netflix
 switch.temp:
   icon: mdi:lightbulb-on
+script.netflix:
+  friendly_name: Netflix starten
+  icon: mdi:netflix
