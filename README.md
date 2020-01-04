@@ -1,6 +1,6 @@
-![](https://img.shields.io/github/workflow/status/outrun0506/homeassistant-config/Home Assistant CI?label=Home%20Assistant%20CI&logo=Github&style=flat-square)
 ![GitHub](https://img.shields.io/github/license/outrun0506/homeassistant-config?style=flat-square)
-![GitHub]https://img.shields.io/github/last-commit/outrun0506/homeassistant-config?logo=Github
+![GitHub last commit](https://img.shields.io/github/last-commit/outrun0506/homeassistant-config?logo=Github&style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/outrun0506/homeassistant-config/Home Assistant CI?label=Home%20Assistant%20CI&logo=GitHub&style=flat-square)
 # Homeassistant Config
 
 Hey @all,\
