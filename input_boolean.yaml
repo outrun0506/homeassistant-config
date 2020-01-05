@@ -1,31 +1,3 @@
-fernsehen:
-  name: fernsehen
-  initial: off
-
-ps4:
-  name: ps4
-  initial: off
-
-switch:
-  name: switch
-  initial: off
-
-bluetooth:
-  name: bluetooth
-  initial: off
-
-kodi:
-  name: kodi
-  initial: off
-
-heimkino:
-  name: heimkino
-  initial: on
-
-smarttv:
-  name: smarttv
-  initial: off
-
 power_living_room:
   name: 'Strom Wohnzimmer automatisch aus'
   initial: on

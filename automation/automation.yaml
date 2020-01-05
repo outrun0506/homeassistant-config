@@ -12,15 +12,6 @@
       payload: 'off'
       retain: 'true'
 
-- alias: 'Set Theme'
-  trigger:
-    platform: state
-    entity_id: input_select.current_theme
-  action:
-    service: frontend.set_theme
-    data_template:
-      name: '{{states.input_select.current_theme.state}}'
-
 - alias: 'Schlafzimmer Licht Automatik Abend'
   trigger:
     platform: state

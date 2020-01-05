@@ -20,8 +20,14 @@ google_actions:
         - script.tv_channel_down
         - script.netflix
         - script.stop_netflix
-      # include_domains:
-      # exclude_entities:
+        - script.heimkino_aus
+        - script.fernsehen
+        - script.ps4
+        - script.switch
+        - script.kodi
+        - script.smarttv
+        - script.firetv
+        - script.zdf_tivi
     entity_config:
       light.nachttischlampe:
         name: Nachtischlampe
@@ -36,17 +42,83 @@ google_actions:
           - 'LED TV'
         room: Wohzimmer
       media_player.denon:
+        name: denon
+        room: Wohnzimmer
+        aliases:
+          - 'Verstärker'
       media_player.firetvstick:
+        name: 'FireTV Stick'
+        room: Wohnzimmer
       media_player.tv:
+        name: 'Fernseher'
+        room: Wohzimmer
+        aliases:
+          - TV
       switch.christbaum:
+        name: Christbaum
+        room: Esszimmer
       switch.mediacenter:
+        name: Mediacenter
+        room: Wohzimmer
+        aliases:
+          - 'Strom Wohzimmer'
       switch.pc:
+        name: PC
+        room: Wohzimmer
+        aliases:
+          - Computer
       switch.nas:
+        name: NAS
+        room: Wohzimmer
       switch.therme:
+        name: Therme
+        room: Keller
+        aliases:
+          - Heizung
       switch.waschmaschine:
+        name: Waschmaschine
+        room: Keller
       switch.temp:
+        name: Weihnachtsbeleuchtung
+        room: Außen
       vacuum.neato:
+        name: Staubsauger
+        room: Wozimmer
       script.tv_channel_up:
+        name: 'Sender hoch'
+        room: Wohzimmer
       script.tv_channel_down:
+        name: 'Sender runter'
+        room: Wohzimmer
       script.netflix:
+        name: Netflix
+        room: Wohzimmer
       script.stop_netflix:
+        name: 'Stop Netflix'
+        room: Wohzimmer
+      script.heimkino_aus:
+        name: 'Heimkino aus'
+        room: Wohzimmer
+      script.fernsehen:
+        name: Fernsehen
+        room: Wohzimmer
+      script.ps4:
+        name: Playstation
+        room: Wohzimmer
+        aliases:
+          - PS4
+      script.switch:
+        name: Switch
+        room: Wohzimmer
+      script.kodi:
+        name: Kodi
+        room: Wohzimmer
+      script.smarttv:
+        name: 'Smart TV'
+        room: Wohzimmer
+      script.firetv:
+        name: FireTV
+        room: Wohzimmer
+      script.zdf_tivi:
+        name: 'ZDF Tivi'
+        room: Wohzimmer

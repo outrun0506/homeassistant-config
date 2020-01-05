@@ -10,14 +10,3 @@ fernbedinung:
      - Kodi
     initial: Aus
     icon: mdi:remote
-
-current_theme:
-  name: 'Theme'
-  options:
-   - 'default'
-   - 'midnight'
-   - 'darkred'
-   - 'darkblue'
-   - 'darkorange' 
-  initial: 'default'
-  icon: 'mdi:palette'

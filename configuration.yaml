@@ -3,11 +3,8 @@ homeassistant:
   latitude: !secret home_lat
   longitude: !secret home_long
   elevation: 566
-
   unit_system: metric
-
   time_zone: Europe/Vienna
-
   customize: !include customize.yaml
  
 zone:
@@ -57,7 +54,7 @@ http:
 
 updater:
 shopping_list:
-cloud:
+cloud: !include  cloud.yaml
 map:
 recorder:
   purge_interval: 2

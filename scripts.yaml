@@ -83,16 +83,54 @@ toggle_tv:
 
 netflix:
   sequence:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.firetvstick
+      source: 'com.amazon.tv.launcher'    
   - service: media_player.turn_on
     entity_id: media_player.firetvstick
-  - service: input_select.select_option
+  - service: media_player.turn_on
+    entity_id: media_player.tv
+  - service: media_player.turn_on
+    entity_id: media_player.denon
+  - service: media_player.select_source
     data:
-     entity_id: input_select.fernbedinung
-     option: 'FireTV'
+      entity_id: media_player.denon
+      source: "MEDIA PLAYER"
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: CHG_INPUT 
   - service: media_player.select_source
     data:
       entity_id: media_player.firetvstick
       source: 'com.netflix.ninja'
+
+zdf_tivi:
+  sequence:
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.firetvstick
+      source: 'com.amazon.tv.launcher'    
+  - service: media_player.turn_on
+    entity_id: media_player.firetvstick
+  - service: media_player.turn_on
+    entity_id: media_player.tv
+  - service: media_player.turn_on
+    entity_id: media_player.denon
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon
+      source: "MEDIA PLAYER"
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: CHG_INPUT 
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.firetvstick
+      source: 'de.zdf.mediathek.tivi'
+
 
 # Voicecommand is issued via IFTTT Webhook and Google Home
 stop_netflix:
@@ -101,3 +139,173 @@ stop_netflix:
     data:
       entity_id: media_player.firetvstick
       source: '!com.netflix.ninja'
+
+heimkino_aus:
+  sequence:
+  - service: media_player.turn_off
+    entity_id: media_player.tv
+  - service: media_player.turn_off
+    entity_id: media_player.denon
+  - service: media_player.turn_off
+    entity_id: media_player.firetvstick
+
+fernsehen:
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.tv
+  - service: media_player.turn_on
+    entity_id: media_player.denon
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon
+      source: "TV AUDIO"
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: TV
+  - delay: '00:00:10'
+  - service: input_number.set_value
+    data:
+      entity_id: input_number.volume_setpoint
+      value: 45
+  - service: media_player.turn_off
+    entity_id: media_player.firetvstick
+
+ps4:
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.tv
+  - service: media_player.turn_on
+    entity_id: media_player.denon
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon
+      source: GAME
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: CHG_INPUT 
+  - delay: '00:00:10'
+  - service: input_number.set_value
+    data:
+      entity_id: input_number.volume_setpoint
+      value: 40
+  - service: media_player.turn_off
+    entity_id: media_player.firetvstick
+
+switch:
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.tv
+  - service: media_player.turn_on
+    entity_id: media_player.denon
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon
+      source: "DVD"
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: CHG_INPUT 
+  - delay: '00:00:10'
+  - service: input_number.set_value
+    data:
+      entity_id: input_number.volume_setpoint
+      value: 50
+  - service: media_player.turn_off
+    entity_id: media_player.firetvstick
+
+kodi:
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.tv
+  - service: media_player.turn_on
+    entity_id: media_player.denon
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon
+      source: Blu-ray
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: CHG_INPUT
+  - service: media_player.turn_off
+    entity_id: media_player.firetvstick
+
+smarttv:
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.tv
+  - service: media_player.turn_on
+    entity_id: media_player.denon
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon
+      source: "TV AUDIO"
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: APPS
+  - service: media_player.turn_off
+    entity_id: media_player.firetvstick
+
+firetv:
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.tv
+  - service: media_player.turn_on
+    entity_id: media_player.denon
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.denon
+      source: "MEDIA PLAYER"
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: CHG_INPUT
+  - service: media_player.turn_on
+    entity_id: media_player.firetvstick
+  - service: media_player.select_source
+    data:
+      entity_id: media_player.firetvstick
+      source: 'com.amazon.tv.launcher'
+
+rtl:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: D5
+
+kika:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: D1
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: D2
+
+super_rtl:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: D1
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: D3
+
+disney_channel:
+  sequence:
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: D1
+  - service: mqtt.publish
+    data:
+      topic: tvcontrol
+      payload: D4
