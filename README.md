@@ -19,7 +19,7 @@ Things ToDO/Planned:
 
 - Documentation here on Github
 - Rework whole HA - move to Integrations in Admin-Interface from YAML
-- Homeassistant Config-Check via Gíthub Actions or via Azure Pipelines - Done
+- Homeassistant Config-Check via Gíthub Actions or via Azure Pipelines - Done have a look at [here](../.github/workflows/homeassistant-check.yml)
 
 BR
 
