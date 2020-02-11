@@ -10,7 +10,7 @@ front_door:
   skip_first: True
   notifiers:
     - mobile_app_mi_a3
-    - mobile_app_sm_a405fn
+    - mobile_app_lukassa40
 
 back_door:
   name: "Türe Hinten ist offen"
@@ -24,7 +24,7 @@ back_door:
   skip_first: True
   notifiers:
     - mobile_app_mi_a3
-    - mobile_app_sm_a405fn
+    - mobile_app_lukassa40
 
 bath_windows:
   name: "Badezimmer Fenster ist offen"
@@ -36,7 +36,7 @@ bath_windows:
   skip_first: True
   notifiers:
     - mobile_app_mi_a3
-    - mobile_app_sm_a405fn
+    - mobile_app_lukassa40
 
 wc_windows:
   name: "WC Fenster ist offen"
@@ -48,4 +48,4 @@ wc_windows:
   skip_first: True
   notifiers:
     - mobile_app_mi_a3
-    - mobile_app_sm_a405fn
+    - mobile_app_lukassa40
