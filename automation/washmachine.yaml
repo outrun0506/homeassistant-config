@@ -14,7 +14,7 @@
       data_template:
         message: "Räum mich bitte aus"
         title: "Waschmaschine ist fertig"
-    - service: notify.mobile_app_mi_a3
+    - service: notify.mobile_app_HuaweiP30Sarah
       data_template:
         message: "Räum mich bitte aus"
         title: "Waschmaschine ist fertig"

@@ -8,7 +8,7 @@
       data_template:
         message: "Temperatur im Wohnzimmer ist niedrig! Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
         title: "Brrr..."
-    - service: notify.mobile_app_mi_a3
+    - service: notify.mobile_app_HuaweiP30Sarah
       data_template:
         message: "Temperatur im Wohnzimmer ist niedrig! Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
         title: "Brrr..."
@@ -23,7 +23,7 @@
       data_template:
         message: "Temperatur im Wohnzimmer ist hoch! Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
         title: "Ich schwitze..."
-    - service: notify.mobile_app_mi_a3
+    - service: notify.mobile_app_HuaweiP30Sarah
       data_template:
         message: "Temperatur im Wohnzimmer ist hoch! Temperatur ist {{ states.sensor.temperatur_wohnzimmer.state }} °C"
         title: "Ich schwitze..."

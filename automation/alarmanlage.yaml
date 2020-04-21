@@ -24,7 +24,7 @@
       data:
         message: "ALARM wurde ausgelöst!"
         title: "Achtung"
-    - service: notify.mobile_app_mi_a3
+    - service: notify.mobile_app_HuaweiP30Sarah
       data:
         message: "ALARM wurde ausgelöst!"
         title: "Achtung"
@@ -52,7 +52,7 @@
       data:
         message: "ALARM wurde ausgelöst!"
         title: "Achtung"
-    - service: notify.mobile_app_mi_a3
+    - service: notify.mobile_app_HuaweiP30Sarah
       data:
         message: "ALARM wurde ausgelöst!"
         title: "Achtung"

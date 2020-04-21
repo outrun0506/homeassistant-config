@@ -1,6 +1,7 @@
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+custom_components/hacs
 
 # Folder config file
 Desktop.ini
@@ -84,5 +85,6 @@ emulated_hue_ids.json
 .cloud
 .storage
 node-red
+
 !/.gitignore
 !/www

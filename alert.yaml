@@ -9,7 +9,7 @@ front_door:
   can_acknowledge: True
   skip_first: True
   notifiers:
-    - mobile_app_mi_a3
+    - mobile_app_HuaweiP30Sarah
     - mobile_app_lukassa40
 
 back_door:
@@ -23,7 +23,7 @@ back_door:
   can_acknowledge: True
   skip_first: True
   notifiers:
-    - mobile_app_mi_a3
+    - mobile_app_HuaweiP30Sarah
     - mobile_app_lukassa40
 
 bath_windows:
@@ -35,7 +35,7 @@ bath_windows:
   can_acknowledge: True
   skip_first: True
   notifiers:
-    - mobile_app_mi_a3
+    - mobile_app_HuaweiP30Sarah
     - mobile_app_lukassa40
 
 wc_windows:
@@ -47,5 +47,5 @@ wc_windows:
   can_acknowledge: True
   skip_first: True
   notifiers:
-    - mobile_app_mi_a3
+    - mobile_app_HuaweiP30Sarah
     - mobile_app_lukassa40

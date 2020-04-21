@@ -23,7 +23,7 @@
   - data:
       message: Bitte kontrolliere warum.
       title: Therme ist aus!
-    service: notify.mobile_app_mi_a3
+    service: notify.mobile_app_HuaweiP30Sarah
 - id: '1570737706783'
   alias: Power state on HA start-up
   trigger:
@@ -48,7 +48,7 @@
   - data:
       message: "Du bist gerade bei Billa, bitte schau nach ob wir noch was von der Einkaufsliste brauchen!"
       title: Einkaufliste kontrollieren!
-    service: notify.mobile_app_mi_a3
+    service: notify.mobile_app_HuaweiP30Sarah
 - id: '1576347984925'
   alias: Notify when Lukas is at Billa
   description: ''
