@@ -9,12 +9,6 @@
     - platform: state
       entity_id: binary_sensor.backdoor
       to: 'on'
-    - platform: state
-      entity_id: binary_sensor.bathroom_window
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.wc_window
-      to: 'on'
   condition:
     - condition: state
       entity_id: alarm_control_panel.ha_alarm
@@ -36,12 +30,6 @@
       to: 'on'
     - platform: state
       entity_id: binary_sensor.backdoor
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.bathroom_window
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.wc_window
       to: 'on'
   condition:
     - condition: state

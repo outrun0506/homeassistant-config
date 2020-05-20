@@ -1,76 +1,24 @@
 homeassistant:
-  name: Home
-  latitude: !secret home_lat
-  longitude: !secret home_long
-  elevation: 566
-  unit_system: metric
-  time_zone: Europe/Vienna
   customize: !include customize.yaml
- 
-zone:
-  name: Home
-  latitude: !secret home_lat
-  longitude: !secret home_long
-  radius: 50
-  icon: mdi:home-variant
-
-zone 2:
-  name: ACP
-  latitude: !secret arbeit_lat
-  longitude: !secret arbeit_long
-  radius: 50
-  icon: mdi:worker
-  
-zone 3:
-  name: Moos
-  latitude: !secret moos_lat
-  longitude: !secret moos_long
-  radius: 50
-  icon: mdi:face
-
-zone 4:
-  name: Billa
-  latitude: !secret billa_lat
-  longitude: !secret billa_long
-  radius: 50
-  icon: mdi:weight
-
-frontend:
-  javascript_version: latest
-  themes: !include_dir_merge_named themes
-  extra_html_url:
-    - /local/custom_ui/state-card-tiles.html
-  extra_html_url_es5:
-    - /local/custom_ui/state-card-tiles_es5.html
 config:
-
 http:
   server_port: 8123
   ip_ban_enabled: True
   login_attempts_threshold: 3
   base_url: !secret ha_url
-  #ssl_certificate: !secret ssl_cert_path
-  #ssl_key: !secret ssl_key_path
-
+frontend:
 updater:
-shopping_list:
-cloud: !include  cloud.yaml
+cloud: !include cloud.yaml
 map:
 recorder:
-  purge_interval: 2
   purge_keep_days: 14
 discovery:
-  ignore:
-    - panasonic_viera
-conversation:
 history:
   include:
     entities:
       - alarm_control_panel.ha_alarm
       - binary_sensor.backdoor
-      - binary_sensor.bathroom_window
       - binary_sensor.frontdoor
-      - binary_sensor.wc_window
       - sensor.luftfeuchte_esszimmer
       - sensor.luftfeuchte_wohnzimmer
       - sensor.memory_use
@@ -82,7 +30,12 @@ history:
       - sensor.verbrauch_waschmaschine_heute
 logbook:
 logger:
-  default: error
+  default: info
+  logs:
+    hass_nabucasa: debug
+    snitun: debug
+    homeassistant.components.cloud: debug
+    homeassistant.components.cloud.iot: debug
 sun:
 sensor: !include sensor.yaml
 media_player: !include mediaplayer.yaml
@@ -107,9 +60,9 @@ neato:
   username: !secret neato_username
   password: !secret neato_password
 weather:
-  - platform: darksky
-    api_key: !secret dark_sky_api
-    mode: daily  
+  - platform: openweathermap
+    api_key: !secret openweather_api
+    mode: freedaily
 system_health:
 person:
 mobile_app:

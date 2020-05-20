@@ -1,124 +1,34 @@
-google_actions:
+alexa:
     filter:
       include_entities:
+        - script.netflix
         - light.bett
         - light.nachttischlampe
         - light.stehlampe
         - light.tv_ambiente
-        - media_player.denon
-        - media_player.firetvstick
+#        - media_player.denon
+#        - media_player.firetvstick
         - media_player.tv
-        - switch.christbaum
         - switch.mediacenter
-        - switch.pc
         - switch.nas
+        - switch.pc
         - switch.therme
         - switch.waschmaschine
-        - switch.temp
-        - vacuum.neato
+        - script.stop_netflix
         - script.tv_channel_up
         - script.tv_channel_down
-        - script.netflix
-        - script.stop_netflix
-        - script.heimkino_aus
+        - script.disney_channel
         - script.fernsehen
-        - script.ps4
-        - script.switch
-        - script.kodi
-        - script.smarttv
         - script.firetv
+        - script.goodnight
+        - script.heimkino_aus
+        - script.kika
+        - script.kodi
+        - script.ps4
+        - script.rtl
+        - script.super_rtl
+        - script.switch
         - script.zdf_tivi
-    entity_config:
-      light.nachttischlampe:
-        name: Nachtischlampe
-        room: Schlafzimmer
-      light.stehlampe:
-        name: Stehlampe
-        room: Wohnzimmer
-      light.tv_ambiente:
-        name: 'TV Ambiente'
-        aliases:
-          - 'TV LED'
-          - 'LED TV'
-        room: Wohzimmer
-      media_player.denon:
-        name: denon
-        room: Wohnzimmer
-        aliases:
-          - 'Verstärker'
-      media_player.firetvstick:
-        name: 'FireTV Stick'
-        room: Wohnzimmer
-      media_player.tv:
-        name: 'Fernseher'
-        room: Wohzimmer
-        aliases:
-          - TV
-      switch.christbaum:
-        name: Christbaum
-        room: Esszimmer
-      switch.mediacenter:
-        name: Mediacenter
-        room: Wohzimmer
-        aliases:
-          - 'Strom Wohzimmer'
-      switch.pc:
-        name: PC
-        room: Wohzimmer
-        aliases:
-          - Computer
-      switch.nas:
-        name: NAS
-        room: Wohzimmer
-      switch.therme:
-        name: Therme
-        room: Keller
-        aliases:
-          - Heizung
-      switch.waschmaschine:
-        name: Waschmaschine
-        room: Keller
-      switch.temp:
-        name: Weihnachtsbeleuchtung
-        room: Außen
-      vacuum.neato:
-        name: Staubsauger
-        room: Wozimmer
-      script.tv_channel_up:
-        name: 'Sender hoch'
-        room: Wohzimmer
-      script.tv_channel_down:
-        name: 'Sender runter'
-        room: Wohzimmer
-      script.netflix:
-        name: Netflix
-        room: Wohzimmer
-      script.stop_netflix:
-        name: 'Stop Netflix'
-        room: Wohzimmer
-      script.heimkino_aus:
-        name: 'Heimkino aus'
-        room: Wohzimmer
-      script.fernsehen:
-        name: Fernsehen
-        room: Wohzimmer
-      script.ps4:
-        name: Playstation
-        room: Wohzimmer
-        aliases:
-          - PS4
-      script.switch:
-        name: Switch
-        room: Wohzimmer
-      script.kodi:
-        name: Kodi
-        room: Wohzimmer
-      script.smarttv:
-        name: 'Smart TV'
-        room: Wohzimmer
-      script.firetv:
-        name: FireTV
-        room: Wohzimmer
-      script.zdf_tivi:
-        name: 'ZDF Tivi'
-        room: Wohzimmer
+        - sensor.temperatur_esszimmer
+        - sensor.temperatur_wohnzimmer
+        - input_boolean.waschmaschine_aktiv

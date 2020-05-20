@@ -22,17 +22,3 @@
    payload_on: "11762698"
    payload_off: "11762702"
    device_class: door
-
--  platform: mqtt
-   state_topic: "home/433toMQTT"
-   name: "bathroom_window"
-   payload_on: "11808522"
-   payload_off: "11808526"
-   device_class: window
-
--  platform: mqtt
-   state_topic: "home/433toMQTT"
-   name: "wc_window"
-   payload_on: "11805962"
-   payload_off: "11805966"
-   device_class: window

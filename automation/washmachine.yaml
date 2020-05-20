@@ -12,23 +12,19 @@
   action:
     - service: notify.mobile_app_lukassa40
       data_template:
-        message: "Räum mich bitte aus"
-        title: "Waschmaschine ist fertig"
+        message: "Räum mich bitte aus, wenn du gerade Zeit hast. Danke."
+        title: "Die Wäsche ist fertig!"
     - service: notify.mobile_app_HuaweiP30Sarah
       data_template:
-        message: "Räum mich bitte aus"
-        title: "Waschmaschine ist fertig"
+        message: "Räum mich bitte aus, wenn du gerade Zeit hast. Danke."
+        title: "Die Wäsche ist fertig!"
     - service: notify.firetv
       data: 
-        message: "Waschmaschine ist fertig. Räum mich bitte aus"
-    - service: tts.google_say
-      entity_id: media_player.esszimmer
+        message: "Die Wäsche ist fertig! Räum mich bitte aus, wenn du gerade Zeit hast. Danke."
+    - service: notify.alexa_media_uberall
       data:
-        message: 'Waschmaschine ist fertig. Räum micht bitte aus'
-    - service: tts.google_say
-      entity_id: media_player.wohnzimmer
-      data:
-        message: 'Waschmaschine ist fertig. Räum micht bitte aus'
+        type: announce
+        message: 'Die Wäsche ist fertig! Räum mich bitte aus, wenn du gerade Zeit hast. Danke.'
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.waschmaschine_aktiv

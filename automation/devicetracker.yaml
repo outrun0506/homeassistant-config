@@ -8,10 +8,6 @@
             {%- else -%}
                     disabled
             {% endif %}
-    - platform: event
-      event_type: telegram_command
-      event_data:
-        command: '/Alarmanlage_ein_keiner_daheim'
   action:
     - service: alarm_control_panel.alarm_arm_away
       data:
