@@ -1,7 +1,7 @@
 - alias: 'TV Ambiente Ein'
   trigger:
     platform: state
-    entity_id: media_player.tv
+    entity_id: media_player.denon
     to: 'on'
   condition:
     condition: sun
@@ -16,7 +16,7 @@
     event: sunset
   condition:
     condition: state
-    entity_id: media_player.tv
+    entity_id: media_player.denon
     state: 'on'
   action:
     - service: homeassistant.turn_on
@@ -25,7 +25,7 @@
 - alias: 'TV Ambiente Aus'
   trigger:
     platform: state
-    entity_id: media_player.tv
+    entity_id: media_player.denon
     to: 'off'
   action:
     - delay: '00:02:00'

@@ -12,7 +12,7 @@
     at: '23:01:00'
   condition:
     - condition: state
-      entity_id: media_player.tv
+      entity_id: media_player.denon
       state: 'off'
     - condition: state
       entity_id: switch.pc
@@ -29,7 +29,7 @@
 - alias: 'Strom aus bei TV aus'
   trigger:
     platform: state
-    entity_id: media_player.tv
+    entity_id: media_player.denon
     to: 'off'
   condition:
     - condition: state
@@ -55,7 +55,7 @@
     to: 'off'
   condition:
     - condition: state
-      entity_id: media_player.tv
+      entity_id: media_player.denon
       state: 'off'
     - condition: time
       after: '23:01'

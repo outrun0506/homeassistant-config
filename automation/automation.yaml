@@ -15,7 +15,7 @@
 - alias: 'Schlafzimmer Licht Automatik Abend'
   trigger:
     platform: state
-    entity_id: media_player.tv
+    entity_id: media_player.denon
     to: 'off'
   condition:
     condition: time
