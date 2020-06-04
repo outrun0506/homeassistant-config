@@ -105,6 +105,10 @@ netflix:
     data:
       entity_id: media_player.firetvstick
       source: 'com.netflix.ninja'
+  - service: androidtv.adb_command
+    data:
+      command: ENTER
+      entity_id: media_player.firetvstick
 
 zdf_tivi:
   sequence:
