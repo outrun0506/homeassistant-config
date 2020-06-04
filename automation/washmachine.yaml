@@ -23,8 +23,9 @@
         message: "Die Wäsche ist fertig! Räum mich bitte aus, wenn du gerade Zeit hast. Danke."
     - service: notify.alexa_media_uberall
       data:
-        type: announce
         message: 'Die Wäsche ist fertig! Räum mich bitte aus, wenn du gerade Zeit hast. Danke.'
+        data:
+          type: announce      
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.waschmaschine_aktiv

@@ -85,6 +85,7 @@ emulated_hue_ids.json
 .cloud
 .storage
 node-red
+custom_components
 
 !/.gitignore
 !/www
