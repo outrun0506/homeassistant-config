@@ -1,3 +1,0 @@
-- platform: manual
-  code: !secret alarmcode
-  trigger_time: 10

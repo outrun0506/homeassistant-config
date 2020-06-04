@@ -16,9 +16,6 @@ discovery:
 history:
   include:
     entities:
-      - alarm_control_panel.ha_alarm
-      - binary_sensor.backdoor
-      - binary_sensor.frontdoor
       - sensor.luftfeuchte_esszimmer
       - sensor.luftfeuchte_wohnzimmer
       - sensor.memory_use
@@ -49,9 +46,7 @@ notify: !include notify.yaml
 light: !include light.yaml
 input_select: !include input_select.yaml
 input_boolean: !include input_boolean.yaml
-alarm_control_panel: !include alarm.yaml
 telegram_bot: !include telegram.yaml
-alert: !include alert.yaml
 tts:
   - platform: google_translate
     service_name: google_say
