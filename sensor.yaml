@@ -1,29 +1,5 @@
 - platform: yr
 
-- platform: mqtt
-  state_topic: 'sensor/wohnzimmer/dht22'
-  name: "Temperatur Wohnzimmer"
-  unit_of_measurement: '°C'
-  value_template: '{{ value_json.temperature }}'
-    
-- platform: mqtt
-  state_topic: 'sensor/wohnzimmer/dht22'
-  name: "Luftfeuchte Wohnzimmer"
-  unit_of_measurement: '%'
-  value_template: '{{ value_json.humidity }}'
-
-- platform: mqtt
-  state_topic: 'sensor/esszimmer/dht22'
-  name: "Temperatur Esszimmer"
-  unit_of_measurement: '°C'
-  value_template: '{{ value_json.temperature }}'
-    
-- platform: mqtt
-  state_topic: 'sensor/esszimmer/dht22'
-  name: "Luftfeuchte Esszimmer"
-  unit_of_measurement: '%'
-  value_template: '{{ value_json.humidity }}'
-
 - platform: systemmonitor
   resources:
     - type: disk_use_percent

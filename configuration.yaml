@@ -14,17 +14,6 @@ recorder:
   purge_keep_days: 14
 discovery:
 history:
-  include:
-    entities:
-      - sensor.luftfeuchte_esszimmer
-      - sensor.luftfeuchte_wohnzimmer
-      - sensor.memory_use
-      - sensor.processor_use
-      - sensor.spannung_waschmaschine
-      - sensor.strom_waschmaschine
-      - sensor.temperatur_esszimmer
-      - sensor.temperatur_wohnzimmer
-      - sensor.verbrauch_waschmaschine_heute
 logbook:
 logger:
   default: info

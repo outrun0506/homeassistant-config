@@ -14,22 +14,6 @@ tv_channel_down:
       topic: tvcontrol
     service: mqtt.publish
 
-bewegungsmelder_override:
-  alias: Bewegungsmelder override
-  sequence:
-  - data:
-      payload: 'off'
-      topic: home/433toMQTT
-    service: mqtt.publish
-
-backdoor_override:
-  alias: Tür hinten schließen
-  sequence:
-  - data:
-      payload: '11910670'
-      topic: home/433toMQTT
-    service: mqtt.publish
-
 goodnight:
   alias: goodnight
   sequence:
@@ -56,30 +40,6 @@ toggle_tv:
     service_template: "{% if is_state(\"media_player.tv\", \"on\") %} \n  media_player.turn_off\n\
       {%- else -%}\n  media_player.turn_on\n{% endif %}\n"
     entity_id: media_player.tv
-
-'1570735725911':
-  alias: Haustüre schließen
-  sequence:
-  - data:
-      payload: '11762702'
-      topic: home/433toMQTT
-    service: mqtt.publish
-
-'1570735847756':
-  alias: Badfenster schließen
-  sequence:
-    data:
-      payload: '11808526'
-      topic: home/433toMQTT
-    service: mqtt.publish
-
-'1570735932758':
-  alias: WC Fenster schließen
-  sequence:
-  - data:
-      payload: '11910670'
-      topic: home/433toMQTT
-    service: mqtt.publish
 
 netflix:
   sequence:

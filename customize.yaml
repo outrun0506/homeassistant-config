@@ -128,13 +128,13 @@ script.tv_channel_up:
 input_boolean.waschmaschine_aktiv:
   icon: mdi:sync
 script.start_neato:
-  icon: mdi:roomba
+  icon: mdi:robot-vacuum
 script.stop_neato:
-  icon: mdi:roomba
+  icon: mdi:robot-vacuum
 script.dock_neato:
-  icon: mdi:roomba
+  icon: mdi:robot-vacuum
 binary_sensor.neato:
-  icon: mdi:roomba
+  icon: mdi:robot-vacuum
 sensor.outrun0506hassioconfig_state:
   friendly_name: Travis Status
 switch.unifi_controller:
@@ -194,7 +194,7 @@ switch.therme:
 automation.schlafzimmer_licht_automatik_abend:
   icon: mdi:weather-sunset-down
 automation.schlafzimmer_licht_automatik_morgen:
-  icon: mdi:mdi:weather-sunset-up
+  icon: mdi:weather-sunset-up
 script.1570735847756:
   icon: mdi:window-closed
 script.1570735932758:
