@@ -36,7 +36,6 @@ notify: !include notify.yaml
 light: !include light.yaml
 input_select: !include input_select.yaml
 input_boolean: !include input_boolean.yaml
-telegram_bot: !include telegram.yaml
 tts:
   - platform: google_translate
     service_name: google_say
