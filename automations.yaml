@@ -1,7 +1,7 @@
 - id: '1567669150763'
   alias: Reset_PowerOff_LivingRoom
   trigger:
-  - at: '22:30'
+  - at: '22:30:00'
     platform: time
   condition: []
   action:
@@ -19,36 +19,6 @@
       payload: ' '
       topic: sonoffs/cmnd/state
     service: mqtt.publish
-- id: '1576347984924'
-  alias: Notify when Sarah is at Billa
-  description: ''
-  trigger:
-  - entity_id: person.sarah
-    event: enter
-    platform: zone
-    zone: zone.billa
-  condition: []
-  action:
-  - data:
-      message: Du bist gerade bei Billa, bitte schau nach ob wir noch was von der
-        Einkaufsliste brauchen!
-      title: Einkaufliste kontrollieren!
-    service: notify.mobile_app_HuaweiP30Sarah
-- id: '1576347984925'
-  alias: Notify when Lukas is at Billa
-  description: ''
-  trigger:
-  - entity_id: person.lukas
-    event: enter
-    platform: zone
-    zone: zone.billa
-  condition: []
-  action:
-  - data:
-      message: Du bist gerade bei Billa, bitte schau nach ob wir noch was von der
-        Einkaufsliste brauchen!
-      title: Einkaufliste kontrollieren!
-    service: notify.mobile_app_lukassa40
 - alias: Schlafzimmer Licht Automatik Abend
   id: 3622e863-7639-4234-9cf8-5c0e0280e7ba
   trigger:
@@ -134,8 +104,8 @@
   - condition: state
     entity_id: switch.pc
     state: 'off'
-  - after: '23:01'
-    before: 04:00
+  - after: '23:01:00'
+    before: 04:00:00
     condition: time
   action:
   - entity_id: switch.nas
@@ -159,8 +129,8 @@
   - condition: state
     entity_id: media_player.denon
     state: 'off'
-  - after: '23:01'
-    before: 04:00
+  - after: '23:01:00'
+    before: 04:00:00
     condition: time
   action:
   - entity_id: switch.nas
@@ -194,6 +164,7 @@
   action:
     service: switch.turn_on
     entity_id: switch.waschmaschine
+  id: c9648ffdfaf9419faa76456fd79822c5
 - id: 2bbc901c-f891-46b8-9779-f2205bae31a3
   alias: Make Snapshot
   trigger:
@@ -251,12 +222,12 @@
     entity_id: input_boolean.waschmaschine_aktiv
     state: 'on'
   action:
-  - service: notify.mobile_app_lukassa40
-    data_template:
+  - service: notify.mobile_app_lukasoneplus
+    data:
       message: Räum mich bitte aus, wenn du gerade Zeit hast. Danke.
       title: Die Wäsche ist fertig!
   - service: notify.mobile_app_HuaweiP30Sarah
-    data_template:
+    data:
       message: Räum mich bitte aus, wenn du gerade Zeit hast. Danke.
       title: Die Wäsche ist fertig!
   - service: notify.firetv
@@ -292,3 +263,15 @@
   - service: input_boolean.turn_on
     data:
       entity_id: input_boolean.waschmaschine_aktiv
+- id: '1598713415051'
+  alias: Cert Renewal
+  description: Starts Lets Encrypt Addon on a daily base
+  trigger:
+  - at: 01:00:00
+    platform: time
+  condition: []
+  action:
+  - data:
+      addon: core_letsencrypt
+    service: hassio.addon_restart
+  mode: single
