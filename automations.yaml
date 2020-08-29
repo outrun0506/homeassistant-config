@@ -275,3 +275,18 @@
       addon: core_letsencrypt
     service: hassio.addon_restart
   mode: single
+- id: '1598723404162'
+  alias: Look Door at 9pm
+  description: Lock the door at 9pm
+  trigger:
+  - at: '21:00:00'
+    platform: time
+  condition: []
+  action:
+  - data: {}
+    entity_id: lock.nuki_hausture
+    service: lock.lock
+  - data:
+      message: Türe wurde versperrt!
+    service: notify.mobile_app_lukasoneplus
+  mode: single
