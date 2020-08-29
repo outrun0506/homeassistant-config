@@ -18,9 +18,9 @@ jobs:
       - name: Create SSL-Folder
         run: mkdir ./ssl
       - name: Create SSL-Dummy File
-        run: touch ./ssl/fullchain.pem
+        run: echo "Dummy" > ./ssl/fullchain.pem
       - name: Create SSL-Key-Dummy File
-        run: touch ./ssl/privkey.pem
+        run: echo "Dummy" > ./ssl/privkey.pem
       - name: Home Assistant Version
         uses: "docker://homeassistant/home-assistant:stable"
         with:
