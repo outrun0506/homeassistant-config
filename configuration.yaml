@@ -7,6 +7,7 @@ http:
   login_attempts_threshold: 3
   base_url: !secret ha_url
 frontend:
+  themes: !include_dir_merge_named themes
 updater:
 cloud: !include cloud.yaml
 map:
@@ -50,4 +51,8 @@ weather:
 system_health:
 person:
 mobile_app:
+lock:
+  platform: nuki
+  host: 192.168.0.52
+  token: !secret nuki_token
 #END

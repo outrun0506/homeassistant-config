@@ -49,9 +49,8 @@
         Einkaufsliste brauchen!
       title: Einkaufliste kontrollieren!
     service: notify.mobile_app_lukassa40
-
-- alias: 'Schlafzimmer Licht Automatik Abend'
-  id: '3622e863-7639-4234-9cf8-5c0e0280e7ba'
+- alias: Schlafzimmer Licht Automatik Abend
+  id: 3622e863-7639-4234-9cf8-5c0e0280e7ba
   trigger:
     platform: state
     entity_id: media_player.denon
@@ -59,36 +58,34 @@
   condition:
     condition: time
     after: '21:30:00'
-    before: '04:00:00'
-  action: 
-    - service: light.turn_on
-      entity_id: light.bett
-    - service: light.turn_on
-      entity_id: light.nachttischlampe
-    - delay: '00:05:00'
-    - service: light.turn_off
-      entity_id: light.bett
-    - service: light.turn_off
-      entity_id: light.nachttischlampe
-  
-- alias: 'Schlafzimmer Licht Automatik Morgen'
-  id: '77be005e-110a-41a5-9ffa-09c184193fd2'
+    before: 04:00:00
+  action:
+  - service: light.turn_on
+    entity_id: light.bett
+  - service: light.turn_on
+    entity_id: light.nachttischlampe
+  - delay: 00:05:00
+  - service: light.turn_off
+    entity_id: light.bett
+  - service: light.turn_off
+    entity_id: light.nachttischlampe
+- alias: Schlafzimmer Licht Automatik Morgen
+  id: 77be005e-110a-41a5-9ffa-09c184193fd2
   trigger:
     platform: time
-    at: '06:00:00'
-  action: 
-    - service: light.turn_on
-      entity_id: light.bett
-    - service: light.turn_on
-      entity_id: light.nachttischlampe
-    - delay: '00:20:00'
-    - service: light.turn_off
-      entity_id: light.bett
-    - service: light.turn_off
-      entity_id: light.nachttischlampe
-  
+    at: 06:00:00
+  action:
+  - service: light.turn_on
+    entity_id: light.bett
+  - service: light.turn_on
+    entity_id: light.nachttischlampe
+  - delay: 00:20:00
+  - service: light.turn_off
+    entity_id: light.bett
+  - service: light.turn_off
+    entity_id: light.nachttischlampe
 - alias: IFTTT Webhooks
-  id: '5af970b6-f1c0-42c2-ac45-ea53f794c97d'
+  id: 5af970b6-f1c0-42c2-ac45-ea53f794c97d
   trigger:
   - event_data:
       action: call_service
@@ -99,130 +96,128 @@
   - data_template:
       entity_id: '{{ trigger.event.data.entity_id }}'
     service_template: '{{ trigger.event.data.service }}'
-
-- alias: 'Strom Wohnzimmer ein'
-  id: '77ea7aa7-aff9-4e2b-841f-f74e3c3f2602'
+- alias: Strom Wohnzimmer ein
+  id: 77ea7aa7-aff9-4e2b-841f-f74e3c3f2602
   trigger:
     platform: time
-    at: '06:30:00'
+    at: 06:30:00
   action:
-    - service: switch.turn_on
-      entity_id: switch.mediacenter
-  
-- alias: 'Strom Wohnzimmer aus'
-  id: 'b2fe6956-b7fe-4f78-b462-da4c66bff0ca'
+  - service: switch.turn_on
+    entity_id: switch.mediacenter
+- alias: Strom Wohnzimmer aus
+  id: b2fe6956-b7fe-4f78-b462-da4c66bff0ca
   trigger:
     platform: time
     at: '23:01:00'
   condition:
-    - condition: state
-      entity_id: media_player.denon
-      state: 'off'
-    - condition: state
-      entity_id: switch.pc
-      state: 'off'
-  action:
-    - service: switch.turn_off
-      entity_id: switch.nas
-    - service: light.turn_off
-      entity_id: light.tv_ambiente
-    - delay: '00:03:00'
-    - service: switch.turn_off
-      entity_id: switch.mediacenter
-  
-- alias: 'Strom aus bei TV aus'
-  id: '26637951-bdf4-4d08-bcd1-126db09d8379'
-  trigger:
-    platform: state
+  - condition: state
     entity_id: media_player.denon
-    to: 'off'
-  condition:
-    - condition: state
-      entity_id: switch.pc
-      state: 'off'
-    - condition: time
-      after: '23:01'
-      before: '04:00'
-  action:
-    - service: switch.turn_off
-      entity_id: switch.nas
-    - delay: '00:01:30'
-    - service: light.turn_off
-      entity_id: light.tv_ambiente
-    - delay: '00:03:00'
-    - service: switch.turn_off
-      entity_id: switch.mediacenter
-  
-- alias: 'Strom aus bei PC aus'
-  id: 'c248af38-6409-4334-b3b7-7dc971a71cda'
-  trigger:
-    platform: state
+    state: 'off'
+  - condition: state
     entity_id: switch.pc
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.nas
+  - service: light.turn_off
+    entity_id: light.tv_ambiente
+  - delay: 00:03:00
+  - service: switch.turn_off
+    entity_id: switch.mediacenter
+- id: 26637951-bdf4-4d08-bcd1-126db09d8379
+  alias: Strom aus bei TV aus
+  trigger:
+  - entity_id: media_player.denon
+    platform: state
     to: 'off'
   condition:
-    - condition: state
-      entity_id: media_player.denon
-      state: 'off'
-    - condition: time
-      after: '23:01'
-      before: '04:00'      
+  - condition: state
+    entity_id: switch.pc
+    state: 'off'
+  - after: '23:01'
+    before: 04:00
+    condition: time
   action:
-    - service: switch.turn_off
-      entity_id: switch.nas
-    - delay: '00:01:30'
-    - service: light.turn_off
-      entity_id: light.tv_ambiente
-    - delay: '00:03:00'
-    - service: switch.turn_off
-      entity_id: switch.mediacenter
-  
-- alias: 'Waschmaschine aus'
-  id: '889d43a2-03a1-4262-b7ab-76807f88502f'
+  - entity_id: switch.nas
+    service: switch.turn_off
+  - delay: 00:01:30
+  - entity_id: light.tv_ambiente
+    service: light.turn_off
+  - entity_id: light.wohnzimmer
+    service: light.turn_off
+  - delay: 00:03:00
+  - entity_id: switch.mediacenter
+    service: switch.turn_off
+  mode: single
+- id: c248af38-6409-4334-b3b7-7dc971a71cda
+  alias: Strom aus bei PC aus
+  trigger:
+  - entity_id: switch.pc
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: media_player.denon
+    state: 'off'
+  - after: '23:01'
+    before: 04:00
+    condition: time
+  action:
+  - entity_id: switch.nas
+    service: switch.turn_off
+  - delay: 00:01:30
+  - entity_id: light.tv_ambiente
+    service: light.turn_off
+  - data: {}
+    entity_id: light.wohnzimmer
+    service: light.turn_off
+  - delay: 00:03:00
+  - entity_id: switch.mediacenter
+    service: switch.turn_off
+  mode: single
+- alias: Waschmaschine aus
+  id: 889d43a2-03a1-4262-b7ab-76807f88502f
   trigger:
     platform: time
     at: '19:00:00'
   condition:
-    - condition: state
-      entity_id: input_boolean.waschmaschine_aktiv
-      state: 'off'
+  - condition: state
+    entity_id: input_boolean.waschmaschine_aktiv
+    state: 'off'
   action:
-    - service: switch.turn_off
-      entity_id: switch.waschmaschine
-  
-- alias: 'Waschmaschine ein'
+  - service: switch.turn_off
+    entity_id: switch.waschmaschine
+- alias: Waschmaschine ein
   trigger:
     platform: time
-    at: '07:30:00'
+    at: 07:30:00
   action:
     service: switch.turn_on
     entity_id: switch.waschmaschine
-      
-- id: '2bbc901c-f891-46b8-9779-f2205bae31a3'
+- id: 2bbc901c-f891-46b8-9779-f2205bae31a3
   alias: Make Snapshot
   trigger:
   - platform: time
-    at: '03:00:00'
+    at: 03:00:00
   condition: []
   action:
   - service: hassio.snapshot_full
     data_template:
       name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-
-- alias: 'TV Ambiente Ein'
-  id: 'be35e056-0ca3-4b67-ba0c-06545179cc26'
+- alias: TV Ambiente Ein
+  id: be35e056-0ca3-4b67-ba0c-06545179cc26
   trigger:
     platform: state
     entity_id: media_player.denon
     to: 'on'
   condition:
     condition: sun
-    after: 'sunset'
+    after: sunset
   action:
-    - service: homeassistant.turn_on
-      entity_id: light.tv_ambiente
-    
-- alias: 'tv ambiente on after sunset'
-  id: '4a32d7b3-a790-46b8-a580-b758c1d58c98'
+  - service: homeassistant.turn_on
+    entity_id: light.tv_ambiente
+- alias: tv ambiente on after sunset
+  id: 4a32d7b3-a790-46b8-a580-b758c1d58c98
   trigger:
     platform: sun
     event: sunset
@@ -231,26 +226,24 @@
     entity_id: media_player.denon
     state: 'on'
   action:
-    - service: homeassistant.turn_on
-      entity_id: light.tv_ambiente
-        
-- alias: 'TV Ambiente Aus'
-  id: 'fcf90cc1-3f80-4589-814e-88a5c69a583d'
+  - service: homeassistant.turn_on
+    entity_id: light.tv_ambiente
+- alias: TV Ambiente Aus
+  id: fcf90cc1-3f80-4589-814e-88a5c69a583d
   trigger:
     platform: state
     entity_id: media_player.denon
     to: 'off'
   action:
-    - delay: '00:02:00'
-    - service: homeassistant.turn_off
-      entity_id: light.tv_ambiente
-
+  - delay: 00:02:00
+  - service: homeassistant.turn_off
+    entity_id: light.tv_ambiente
 - alias: washmachine_finished
-  id: '47565c9e-ada8-4937-b065-a8c371601de0'
+  id: 47565c9e-ada8-4937-b065-a8c371601de0
   trigger:
     platform: numeric_state
     entity_id: sensor.waschmaschine_energy_power
-    below: 10.00
+    below: 10.0
     for:
       minutes: 5
   condition:
@@ -258,36 +251,37 @@
     entity_id: input_boolean.waschmaschine_aktiv
     state: 'on'
   action:
-    - service: notify.mobile_app_lukassa40
-      data_template:
-        message: "Räum mich bitte aus, wenn du gerade Zeit hast. Danke."
-        title: "Die Wäsche ist fertig!"
-    - service: notify.mobile_app_HuaweiP30Sarah
-      data_template:
-        message: "Räum mich bitte aus, wenn du gerade Zeit hast. Danke."
-        title: "Die Wäsche ist fertig!"
-    - service: notify.firetv
-      data: 
-        message: "Die Wäsche ist fertig! Räum mich bitte aus, wenn du gerade Zeit hast. Danke."
-    - service: notify.alexa_media
+  - service: notify.mobile_app_lukassa40
+    data_template:
+      message: Räum mich bitte aus, wenn du gerade Zeit hast. Danke.
+      title: Die Wäsche ist fertig!
+  - service: notify.mobile_app_HuaweiP30Sarah
+    data_template:
+      message: Räum mich bitte aus, wenn du gerade Zeit hast. Danke.
+      title: Die Wäsche ist fertig!
+  - service: notify.firetv
+    data:
+      message: Die Wäsche ist fertig! Räum mich bitte aus, wenn du gerade Zeit hast.
+        Danke.
+  - service: notify.alexa_media
+    data:
+      target:
+      - media_player.esszimmer
+      - media_player.kuche
+      - media_player.tobias
+      - media_player.helga
+      - media_player.wohzimmer
+      title: Die Wäsche ist fertig
+      message: Die Wäsche ist fertig! Räum mich bitte aus, wenn du gerade Zeit hast.
+        Danke.
       data:
-        target: 
-          - media_player.esszimmer
-          - media_player.kuche
-          - media_player.tobias
-          - media_player.helga
-          - media_player.wohzimmer
-        title: "Die Wäsche ist fertig"
-        message: "Die Wäsche ist fertig! Räum mich bitte aus, wenn du gerade Zeit hast. Danke."
-        data: 
-          method: all
-          type: announce
-    - service: input_boolean.turn_off
-      data:
-        entity_id: input_boolean.waschmaschine_aktiv
-    
+        method: all
+        type: announce
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.waschmaschine_aktiv
 - alias: washmachine_running
-  id: '81b4974f-0191-4bd9-abbb-0256cbe9019a'
+  id: 81b4974f-0191-4bd9-abbb-0256cbe9019a
   trigger:
     platform: numeric_state
     entity_id: sensor.waschmaschine_energy_power
@@ -295,6 +289,6 @@
     for:
       seconds: 5
   action:
-    - service: input_boolean.turn_on
-      data:
-        entity_id: input_boolean.waschmaschine_aktiv
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.waschmaschine_aktiv
