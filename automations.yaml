@@ -19,26 +19,26 @@
       payload: ' '
       topic: sonoffs/cmnd/state
     service: mqtt.publish
-- alias: Schlafzimmer Licht Automatik Abend
-  id: 3622e863-7639-4234-9cf8-5c0e0280e7ba
+- id: 3622e863-7639-4234-9cf8-5c0e0280e7ba
+  alias: Schlafzimmer Licht Automatik Abend
   trigger:
+  - entity_id: media_player.denon
     platform: state
-    entity_id: media_player.denon
     to: 'off'
   condition:
-    condition: time
-    after: '21:30:00'
+  - after: '21:30:00'
     before: 04:00:00
+    condition: time
   action:
-  - service: light.turn_on
-    entity_id: light.bett
-  - service: light.turn_on
-    entity_id: light.nachttischlampe
+  - entity_id: light.schlafzimmer
+    service: light.turn_on
   - delay: 00:05:00
-  - service: light.turn_off
-    entity_id: light.bett
-  - service: light.turn_off
-    entity_id: light.nachttischlampe
+  - data:
+      brightness: 100
+      color_temp: 350
+    entity_id: light.schlafzimmer
+    service: light.turn_off
+  mode: single
 - alias: Schlafzimmer Licht Automatik Morgen
   id: 77be005e-110a-41a5-9ffa-09c184193fd2
   trigger:
@@ -101,9 +101,6 @@
     platform: state
     to: 'off'
   condition:
-  - condition: state
-    entity_id: switch.pc
-    state: 'off'
   - after: '23:01:00'
     before: 04:00:00
     condition: time
@@ -114,32 +111,6 @@
   - entity_id: light.tv_ambiente
     service: light.turn_off
   - entity_id: light.wohnzimmer
-    service: light.turn_off
-  - delay: 00:03:00
-  - entity_id: switch.mediacenter
-    service: switch.turn_off
-  mode: single
-- id: c248af38-6409-4334-b3b7-7dc971a71cda
-  alias: Strom aus bei PC aus
-  trigger:
-  - entity_id: switch.pc
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: media_player.denon
-    state: 'off'
-  - after: '23:01:00'
-    before: 04:00:00
-    condition: time
-  action:
-  - entity_id: switch.nas
-    service: switch.turn_off
-  - delay: 00:01:30
-  - entity_id: light.tv_ambiente
-    service: light.turn_off
-  - data: {}
-    entity_id: light.wohnzimmer
     service: light.turn_off
   - delay: 00:03:00
   - entity_id: switch.mediacenter
@@ -288,5 +259,50 @@
     service: lock.lock
   - data:
       message: Türe wurde versperrt!
+    service: notify.mobile_app_lukasoneplus
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Die Haustüre ist jetzt versperrt. Ich wünsche eine gute Nacht
+      target:
+      - media_player.esszimmer
+      - media_player.kuche
+      - media_player.helga
+      - media_player.wohzimmer
+      title: Haustüre versperrt
+    service: notify.alexa_media
+  mode: single
+- id: '1598723884273'
+  alias: Internetspeed is slow
+  description: Check if Speedtest is below a specified treshold
+  trigger:
+  - below: '170'
+    entity_id: sensor.speedtest_download
+    platform: numeric_state
+  condition: []
+  action:
+  - data:
+      message: Die Internetgeschwindigkeit ist gesunken.
+      title: Internet ist langsam
+    service: notify.mobile_app_lukasoneplus
+  mode: single
+- id: '1598797452112'
+  alias: Nightlight on Motion
+  description: Activate Nighlight after 23:00:00 if Motion is detected
+  trigger:
+  - device_id: f067fe4853c14161a4ffd20c1a3cf1a4
+    domain: binary_sensor
+    entity_id: binary_sensor.motion_zubau_motion
+    platform: device
+    type: motion
+  condition:
+  - after: '23:30:00'
+    before: 06:00:00
+    condition: time
+  action:
+  - scene: scene.nachtlicht
+  - data:
+      message: Nachtlicht wurde aktiviert
     service: notify.mobile_app_lukasoneplus
   mode: single

@@ -56,4 +56,5 @@ lock:
   platform: nuki
   host: 192.168.0.52
   token: !secret nuki_token
+scene: !include scenes.yaml
 #END

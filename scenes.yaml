@@ -1,0 +1,77 @@
+- id: '1598788880625'
+  name: kochen
+  entities:
+    light.kuche:
+      brightness: 255
+      color_temp: 200
+      friendly_name: Küche
+      state: 'on'
+  icon: mdi:chef-hat
+- id: '1598790758576'
+  name: Fernseh Abend
+  entities:
+    light.bad:
+      friendly_name: Bad
+      state: 'off'
+    light.esstisch:
+      friendly_name: Esstisch
+      state: 'off'
+    light.schreibtisch:
+      friendly_name: Schreibtisch
+      state: 'off'
+    light.tv_ambiente:
+      brightness: 255
+      friendly_name: TV Ambiente
+      hs_color:
+      - 60
+      - 100
+      rgb_color:
+      - 255
+      - 255
+      - 0
+      state: 'on'
+      xy_color:
+      - 0.444
+      - 0.517
+    light.vorhaus:
+      friendly_name: Vorhaus
+      state: 'off'
+      supported_features: 43
+    light.wohnzimmer:
+      brightness: 113
+      color_temp: 350
+      friendly_name: Wohnzimmer
+      state: 'on'
+    light.zubau:
+      friendly_name: Zubau
+      state: 'off'
+  icon: mdi:television-classic
+- id: '1598796881415'
+  name: Nachtlicht
+  entities:
+    light.kuche:
+      friendly_name: Küche
+      brightness: 50
+      color_temp: 350
+      state: 'on'
+      supported_features: 43
+    light.schreibtisch:
+      brightness: 50
+      color_temp: 350
+      state: 'on'
+    light.vorhaus:
+      friendly_name: Vorhaus
+      brightness: 50
+      color_temp: 350
+      state: 'on'
+    light.wohnzimmer:
+      friendly_name: Wohnzimmer
+      brightness: 50
+      color_temp: 350
+      state: 'on'
+    light.zubau:
+      friendly_name: Zubau
+      brightness: 50
+      color_temp: 350
+      state: 'on'
+  icon: mdi:weather-night

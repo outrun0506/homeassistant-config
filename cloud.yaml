@@ -12,7 +12,6 @@ alexa:
         - switch.mediacenter
         - switch.nas
         - switch.pc
-        - switch.therme
         - switch.waschmaschine
         - script.stop_netflix
         - script.tv_channel_up
@@ -32,3 +31,6 @@ alexa:
         - sensor.temperatur_esszimmer
         - sensor.temperatur_wohnzimmer
         - input_boolean.waschmaschine_aktiv
+        - scene.kochen
+        - scene.fernseh_abend
+        - scene.nachtlicht

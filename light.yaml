@@ -4,12 +4,6 @@
       name: 'TV Ambiente'
       mode: "rgb"
 
-- platform: flux_led
-  devices:
-    192.168.0.69:
-      name: 'Bett'
-      mode: "rgb"
-
 - platform: mqtt
   name: "Stehlampe"
   state_topic: "stat/stehlampe/POWER"
@@ -18,11 +12,9 @@
   payload_on: "ON"
   retain: true
 
-- platform: mqtt
-  name: "Nachttischlampe"
-  state_topic: "stat/nachttischlampe/POWER"
-  command_topic: "cmnd/nachttischlampe/POWER"
-  qos: 1
-  payload_on: "ON"
-  payload_off: "OFF"
-  retain: true
+- platform: group
+  name: Keller
+  entities:
+    - light.keller_1
+    - light.keller_2
+    - light.kellertreppe    
