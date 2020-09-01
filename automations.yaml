@@ -30,12 +30,13 @@
     before: 04:00:00
     condition: time
   action:
-  - entity_id: light.schlafzimmer
-    service: light.turn_on
-  - delay: 00:05:00
   - data:
       brightness: 100
       color_temp: 350
+    entity_id: light.schlafzimmer
+    service: light.turn_on
+  - delay: 00:05:00
+  - data: {}
     entity_id: light.schlafzimmer
     service: light.turn_off
   mode: single
@@ -305,4 +306,6 @@
   - data:
       message: Nachtlicht wurde aktiviert
     service: notify.mobile_app_lukasoneplus
+  - delay: 00:01:30
+  - scene: scene.before
   mode: single
