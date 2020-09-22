@@ -6,7 +6,6 @@ on:
   pull_request:
     branch:
       - master
-
 jobs:
   check:
     name: Home Assistant Config Check
