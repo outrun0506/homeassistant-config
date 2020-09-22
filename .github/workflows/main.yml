@@ -1,24 +1,18 @@
 name: "Check HA Config"
-
 on:
   push:
-    branches: [ master ]
+    branch:
+      - master
   pull_request:
-    branches: [ master ]
+    branch:
+      - master
 
 jobs:
-  build:
-    strategy:
-      fail-fast: false
-      matrix:
-        HA_VERSION: [STABLE, RC, DEV]
-      max-parallel: 3
-
+  check:
+    name: Home Assistant Config Check
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Home Assistant Configuration Check
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Run Config Check
       uses: ludeeus/action-ha-config-check@master
-      with:
-        version: matrix.HA_VERSION
-        config_path: .
