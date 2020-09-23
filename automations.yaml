@@ -267,10 +267,8 @@
         type: announce
       message: Die Haustüre ist jetzt versperrt. Ich wünsche eine gute Nacht
       target:
-      - media_player.esszimmer
-      - media_player.kuche
       - media_player.helga
-      - media_player.wohzimmer
+      - media_player.uberall
       title: Haustüre versperrt
     service: notify.alexa_media
   mode: single
@@ -307,5 +305,7 @@
       message: Nachtlicht wurde aktiviert
     service: notify.mobile_app_lukasoneplus
   - delay: 00:01:30
-  - scene: scene.before
+  - data:
+      entity_id: lights.all
+    service: light.turn_off
   mode: single

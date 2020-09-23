@@ -1,7 +1,6 @@
 alexa:
     filter:
       include_entities:
-        - script.netflix
         - light.bett
         - light.nachttischlampe
         - light.stehlampe
@@ -13,24 +12,13 @@ alexa:
         - switch.nas
         - switch.pc
         - switch.waschmaschine
-        - script.stop_netflix
-        - script.tv_channel_up
-        - script.tv_channel_down
-        - script.disney_channel
-        - script.fernsehen
-        - script.firetv
-        - script.goodnight
-        - script.heimkino_aus
-        - script.kika
-        - script.kodi
-        - script.ps4
-        - script.rtl
-        - script.super_rtl
-        - script.switch
-        - script.zdf_tivi
         - sensor.temperatur_esszimmer
         - sensor.temperatur_wohnzimmer
         - input_boolean.waschmaschine_aktiv
         - scene.kochen
         - scene.fernseh_abend
         - scene.nachtlicht
+        - script.netflix_starten
+        - script.netflix_stoppen
+        - script.heimkino_aus
+        - script.ps4
