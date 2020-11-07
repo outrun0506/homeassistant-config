@@ -1,14 +1,7 @@
-- platform: mqtt
-  name: "Stehlampe"
-  state_topic: "stat/stehlampe/POWER"
-  command_topic: "cmnd/stehlampe/Power"
-  payload_off: "OFF"
-  payload_on: "ON"
-  retain: true
-
 - platform: group
   name: Keller
   entities:
     - light.keller_1
     - light.keller_2
+    - light.keller_3
     - light.kellertreppe    

@@ -1,49 +1,89 @@
 - id: '1598788880625'
-  name: kochen
+  name: Kochen
   entities:
     light.kuche:
+      min_mireds: 153
+      max_mireds: 454
       brightness: 255
-      color_temp: 200
+      color_temp: 233
       friendly_name: Küche
+      supported_features: 43
       state: 'on'
   icon: mdi:chef-hat
 - id: '1598790758576'
   name: Fernseh Abend
   entities:
-    light.bad:
-      friendly_name: Bad
-      state: 'off'
     light.esstisch:
+      min_mireds: 153
+      max_mireds: 454
       friendly_name: Esstisch
+      supported_features: 43
       state: 'off'
     light.schreibtisch:
+      min_mireds: 153
+      max_mireds: 454
       friendly_name: Schreibtisch
-      state: 'off'
-    light.tv_ambiente:
-      brightness: 255
-      friendly_name: TV Ambiente
-      hs_color:
-      - 60
-      - 100
-      rgb_color:
-      - 255
-      - 255
-      - 0
-      state: 'on'
-      xy_color:
-      - 0.444
-      - 0.517
-    light.vorhaus:
-      friendly_name: Vorhaus
-      state: 'off'
       supported_features: 43
+      state: 'off'
     light.wohnzimmer:
-      brightness: 113
-      color_temp: 350
+      min_mireds: 153
+      max_mireds: 454
       friendly_name: Wohnzimmer
-      state: 'on'
-    light.zubau:
-      friendly_name: Zubau
+      supported_features: 43
+      state: 'off'
+    media_player.fernseher:
+      source_list:
+      - 'STREAM_NOTIFICATION:'
+      - com.google.android.inputmethod.latin
+      - com.android.systemui
+      - org.droidtv.upnp
+      - com.android.vending
+      - com.google.android.tv.remote.service
+      - com.google.process.gapps
+      - dialserver
+      - com.google.android.gms.persistent
+      - com.android.vending:download_service
+      - org.droidtv.ambihue
+      - ord.droidtv.eum
+      - com.google.android.katniss:interactor
+      - com.google.android.tvrecommendations
+      - com.google.android.gms
+      - com.google.process.gservices
+      - com.google.android.katniss:search
+      - org.droidtv.userlogger
+      - org.droidtv.ambihue.common
+      - org.droidtv.philipstvdrawer
+      - Netflix
+      - Google Cast
+      - org.droidtv.amazonalexa
+      - ord.droidtv.eum.demome
+      - org.droidtv.nettv.market
+      - org.droidtv.nettvapps
+      - org.droidtv.nettvregistration
+      - tv.inscape.tvclient.inscapeacr:remote
+      - ord.droidtv.eum.sticker
+      - com.google.android.music:main
+      - com.android.providers.calendar
+      - com.google.android.videos
+      - com.google.android.apps.mediashell:privileged_process0
+      - YouTube
+      - com.amazon.amazonvideo.livingroom
+      - Android TV Launcher
+      volume_level: 0.3333333333333333
+      is_volume_muted: true
+      app_id: com.google.android.tvlauncher
+      app_name: Android TV Launcher
+      source: Android TV Launcher
+      adb_response:
+      friendly_name: Fernseher
+      entity_picture: /api/media_player_proxy/media_player.fernseher?token=c9d61cbf39abd81352094db351cd95d55ed5bf61d6c91304fa0247bc55a10640&cache=1603705090.230316
+      supported_features: 23997
+      state: idle
+    light.kuche:
+      min_mireds: 153
+      max_mireds: 454
+      friendly_name: Küche
+      supported_features: 43
       state: 'off'
   icon: mdi:television-classic
 - id: '1598796881415'
@@ -75,3 +115,31 @@
       color_temp: 350
       state: 'on'
   icon: mdi:weather-night
+- id: '1603704157275'
+  name: Wohnbereich Licht ein
+  entities:
+    light.kuche:
+      min_mireds: 153
+      max_mireds: 454
+      brightness: 255
+      color_temp: 374
+      friendly_name: Küche
+      supported_features: 43
+      state: 'on'
+    light.wohnzimmer:
+      min_mireds: 153
+      max_mireds: 454
+      brightness: 255
+      color_temp: 371
+      friendly_name: Wohnzimmer
+      supported_features: 43
+      state: 'on'
+    light.esstisch:
+      min_mireds: 153
+      max_mireds: 454
+      brightness: 255
+      color_temp: 376
+      friendly_name: Esstisch
+      supported_features: 43
+      state: 'on'
+  icon: mdi:floor-lamp-dual

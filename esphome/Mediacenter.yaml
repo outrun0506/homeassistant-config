@@ -1,0 +1,51 @@
+esphome:
+  name: mediacenter
+  platform: ESP8266
+  board: esp8285
+  arduino_version: 2.4.2
+
+wifi:
+  ssid: !secret ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: !secret ap_ssid
+    password: !secret ap_password
+
+captive_portal:
+
+api:
+
+logger:
+
+ota:
+
+binary_sensor:
+- platform: gpio
+  pin:
+    number: GPIO0
+    mode: INPUT_PULLUP
+    inverted: True
+  name: "Mediacenter Button"
+  on_press:
+    - switch.toggle: relay
+- platform: status
+  name: "Mediacenter Status"
+
+
+switch:
+- platform: gpio
+  name: "Mediacenter Relay"
+  pin: GPIO12
+  id: relay
+
+output:
+- platform: esp8266_pwm
+  id: s20_green_led
+  pin: GPIO13
+  inverted: True
+
+light:
+- platform: monochromatic
+  name: "Mediacenter Green LED"
+  output: s20_green_led

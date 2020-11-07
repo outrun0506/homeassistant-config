@@ -7,7 +7,7 @@ netflix_starten:
       entity_id: media_player.fernseher
     service: media_player.turn_on
   - data:
-      entity_id: media_player.fire_tv
+      entity_id: media_player.fernseher
       source: com.netflix.ninja
     service: media_player.select_source
 netflix_stoppen:
@@ -35,13 +35,13 @@ ps4:
   icon: mdi:sony-playstation
   mode: single
   sequence:
-    - data:
-        entity_id: media_player.fernseher
-      service: media_player.turn_on
-    - data:
-        entity_id: media_player.denon
-      service: media_player.turn_on
-    - data:
-        entity_id: media_player.fernseher
-        command: HDMI1
-      service: androidtv.adb_command
+  - data:
+      entity_id: media_player.fernseher
+    service: media_player.turn_on
+  - data:
+      entity_id: media_player.denon
+    service: media_player.turn_on
+  - data:
+      entity_id: media_player.fernseher
+      command: HDMI1
+    service: androidtv.adb_command

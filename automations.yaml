@@ -39,34 +39,65 @@
   - data: {}
     entity_id: light.schlafzimmer
     service: light.turn_off
+  - data: {}
+    entity_id: light.bad
+    service: light.turn_off
+  - data: {}
+    entity_id: light.kuche
+    service: light.turn_off
+  - data: {}
+    entity_id: light.wohnzimmer
+    service: light.turn_off
+  - data: {}
+    entity_id: light.vorhaus
+    service: light.turn_off
+  - data: {}
+    entity_id: light.zubau
+    service: light.turn_off
+  - data: {}
+    entity_id: light.keller
+    service: light.turn_off
+  - data: {}
+    entity_id: light.tobias
+    service: light.turn_off
+  - data: {}
+    entity_id: light.eli
+    service: light.turn_off
+  - data: {}
+    entity_id: light.schreibtisch
+    service: light.turn_off
+  - data: {}
+    entity_id: light.esstisch
+    service: light.turn_off
   mode: single
-- alias: Schlafzimmer Licht Automatik Morgen
-  id: 77be005e-110a-41a5-9ffa-09c184193fd2
+- id: 77be005e-110a-41a5-9ffa-09c184193fd2
+  alias: Schlafzimmer Licht Automatik Morgen
   trigger:
-    platform: time
-    at: 06:00:00
+  - platform: time
+    at: 06:10:00
+  condition:
+  - condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
   action:
   - service: light.turn_on
-    entity_id: light.bett
+    data: {}
+    entity_id: light.schlafzimmer
+  - delay: 00:07:00
   - service: light.turn_on
-    entity_id: light.nachttischlampe
-  - delay: 00:20:00
-  - service: light.turn_off
-    entity_id: light.bett
-  - service: light.turn_off
-    entity_id: light.nachttischlampe
-- alias: IFTTT Webhooks
-  id: 5af970b6-f1c0-42c2-ac45-ea53f794c97d
-  trigger:
-  - event_data:
-      action: call_service
-    event_type: ifttt_webhook_received
-    platform: event
-  condition: []
-  action:
-  - data_template:
-      entity_id: '{{ trigger.event.data.entity_id }}'
-    service_template: '{{ trigger.event.data.service }}'
+    data: {}
+    entity_id: light.wohnzimmer
+  - service: light.turn_on
+    data: {}
+    entity_id: light.kuche
+  - service: light.turn_on
+    data: {}
+    entity_id: light.esstisch
+  mode: single
 - alias: Strom Wohnzimmer ein
   id: 77ea7aa7-aff9-4e2b-841f-f74e3c3f2602
   trigger:
@@ -74,7 +105,7 @@
     at: 06:30:00
   action:
   - service: switch.turn_on
-    entity_id: switch.mediacenter
+    entity_id: switch.mediacenter_relay
 - alias: Strom Wohnzimmer aus
   id: b2fe6956-b7fe-4f78-b462-da4c66bff0ca
   trigger:
@@ -94,7 +125,7 @@
     entity_id: light.tv_ambiente
   - delay: 00:03:00
   - service: switch.turn_off
-    entity_id: switch.mediacenter
+    entity_id: switch.mediacenter_relay
 - id: 26637951-bdf4-4d08-bcd1-126db09d8379
   alias: Strom aus bei TV aus
   trigger:
@@ -108,19 +139,14 @@
   action:
   - entity_id: switch.nas
     service: switch.turn_off
-  - delay: 00:01:30
-  - entity_id: light.tv_ambiente
-    service: light.turn_off
-  - entity_id: light.wohnzimmer
-    service: light.turn_off
-  - delay: 00:03:00
-  - entity_id: switch.mediacenter
+  - delay: 00:00:45
+  - entity_id: switch.mediacenter_relay
     service: switch.turn_off
   mode: single
-- alias: Waschmaschine aus
-  id: 889d43a2-03a1-4262-b7ab-76807f88502f
+- id: 889d43a2-03a1-4262-b7ab-76807f88502f
+  alias: Waschmaschine aus
   trigger:
-    platform: time
+  - platform: time
     at: '19:00:00'
   condition:
   - condition: state
@@ -128,15 +154,17 @@
     state: 'off'
   action:
   - service: switch.turn_off
-    entity_id: switch.waschmaschine
-- alias: Waschmaschine ein
+    entity_id: switch.waschmaschine_relay
+  mode: single
+- id: c9648ffdfaf9419faa76456fd79822c5
+  alias: Waschmaschine ein
   trigger:
-    platform: time
+  - platform: time
     at: 07:30:00
   action:
-    service: switch.turn_on
-    entity_id: switch.waschmaschine
-  id: c9648ffdfaf9419faa76456fd79822c5
+  - service: switch.turn_on
+    entity_id: switch.waschmaschine_relay
+  mode: single
 - id: 2bbc901c-f891-46b8-9779-f2205bae31a3
   alias: Make Snapshot
   trigger:
@@ -147,50 +175,16 @@
   - service: hassio.snapshot_full
     data_template:
       name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-- alias: TV Ambiente Ein
-  id: be35e056-0ca3-4b67-ba0c-06545179cc26
+- id: 47565c9e-ada8-4937-b065-a8c371601de0
+  alias: washmachine_finished
   trigger:
-    platform: state
-    entity_id: media_player.denon
-    to: 'on'
-  condition:
-    condition: sun
-    after: sunset
-  action:
-  - service: homeassistant.turn_on
-    entity_id: light.tv_ambiente
-- alias: tv ambiente on after sunset
-  id: 4a32d7b3-a790-46b8-a580-b758c1d58c98
-  trigger:
-    platform: sun
-    event: sunset
-  condition:
-    condition: state
-    entity_id: media_player.denon
-    state: 'on'
-  action:
-  - service: homeassistant.turn_on
-    entity_id: light.tv_ambiente
-- alias: TV Ambiente Aus
-  id: fcf90cc1-3f80-4589-814e-88a5c69a583d
-  trigger:
-    platform: state
-    entity_id: media_player.denon
-    to: 'off'
-  action:
-  - delay: 00:02:00
-  - service: homeassistant.turn_off
-    entity_id: light.tv_ambiente
-- alias: washmachine_finished
-  id: 47565c9e-ada8-4937-b065-a8c371601de0
-  trigger:
-    platform: numeric_state
-    entity_id: sensor.waschmaschine_energy_power
-    below: 10.0
+  - platform: numeric_state
+    entity_id: sensor.waschmaschine_leistung
+    below: '10'
     for:
       minutes: 5
   condition:
-    condition: state
+  - condition: state
     entity_id: input_boolean.waschmaschine_aktiv
     state: 'on'
   action:
@@ -223,18 +217,19 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.waschmaschine_aktiv
-- alias: washmachine_running
-  id: 81b4974f-0191-4bd9-abbb-0256cbe9019a
+  mode: single
+- id: 81b4974f-0191-4bd9-abbb-0256cbe9019a
+  alias: washmachine_running
   trigger:
-    platform: numeric_state
-    entity_id: sensor.waschmaschine_energy_power
-    above: 200
-    for:
-      seconds: 5
+  - platform: numeric_state
+    entity_id: sensor.waschmaschine_leistung
+    above: '200'
+    for: 0:01:00
   action:
   - service: input_boolean.turn_on
     data:
       entity_id: input_boolean.waschmaschine_aktiv
+  mode: single
 - id: '1598713415051'
   alias: Cert Renewal
   description: Starts Lets Encrypt Addon on a daily base
@@ -276,7 +271,7 @@
   alias: Internetspeed is slow
   description: Check if Speedtest is below a specified treshold
   trigger:
-  - below: '170'
+  - below: 180
     entity_id: sensor.speedtest_download
     platform: numeric_state
   condition: []

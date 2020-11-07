@@ -11,7 +11,7 @@ http:
 frontend:
   themes: !include_dir_merge_named themes
 updater:
-cloud: !include cloud.yaml
+cloud:
 map:
 recorder:
   purge_keep_days: 14
@@ -57,4 +57,8 @@ lock:
   host: 192.168.0.52
   token: !secret nuki_token
 scene: !include scenes.yaml
+nibe:
+spotify:
+  client_id: !secret spotify_clientid
+  client_secret: !secret spotify_clientsecret
 #END
