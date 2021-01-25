@@ -1,13 +1,40 @@
-name: "Check HA Config"
+name: home-assistant-check
+
 on:
-  push:
-    branch:
-      - master
   pull_request:
-    branch:
-      - master
+    branches: 
+    - main
+  push:
+    branches: 
+    - main
+
 jobs:
   check:
-    - name: 👷 Setup Home Assistant
-    id: homeassistant
-    uses: ludeeus/setup-homeassistant@main
+    name: With config-dir
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        channel:
+          - stable
+          - beta
+          - dev
+    steps:
+      - name: 📥 Check out the repository
+        uses: actions/checkout@v2
+
+      - name: 👷 Setup Home Assistant
+        id: homeassistant
+        uses: ludeeus/setup-homeassistant@main
+        with:
+          tag: ${{ matrix.channel }}
+          config-dir: test_configuration
+
+      - name: ✅ Verify API Access
+        run: | 
+          curl -sSL -f -X GET \
+            -H "Authorization: Bearer ${{ steps.homeassistant.outputs.token }}" \
+            -H "Content-Type: application/json" \
+            ${{ steps.homeassistant.outputs.url }}/api/states
+
+      - name: 📜 Get logs
+        run: docker logs ${{ steps.homeassistant.outputs.containername }}
