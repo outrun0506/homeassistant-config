@@ -8,10 +8,6 @@ on:
       - master
 jobs:
   check:
-    name: Home Assistant Config Check
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
-    - name: Run Config Check
-      uses: ludeeus/action-ha-config-check@master
+    - name: 👷 Setup Home Assistant
+    id: homeassistant
+    uses: ludeeus/setup-homeassistant@main
