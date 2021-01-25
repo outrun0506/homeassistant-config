@@ -1,0 +1,90 @@
+esphome:
+  name: blegateway
+  platform: ESP32
+  board: wemos_d1_mini32
+
+wifi:
+  ssid: !secret ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: !secret ap_ssid
+    password: !secret ap_password
+
+captive_portal:
+
+api:
+
+logger:
+
+ota:
+
+esp32_ble_tracker:
+
+binary_sensor:
+  - platform: status
+    name: "BLE Gateway Status"
+
+# Sensor MAC-Adresses:
+# A4:C1:38:33:6E:66 - Eli
+# A4:C1:38:AC:40:88 - Bad
+# A4:C1:38:01:33:18 - Küche
+# A4:C1:38:CF:BD:BE - SZ
+# A4:C1:38:81:79:7C - WZ
+# A4:C1:38:EB:E5:FD - Tobias
+
+sensor:
+  - platform: xiaomi_lywsd03mmc
+    mac_address: "A4:C1:38:01:33:18"
+    bindkey: "eef418daf699a0c188f3bfd17e4565d9"
+    temperature:
+      name: "Küche Temperatur"
+    humidity:
+      name: "Küche Luftfeuchtigkeit"
+    battery_level:
+      name: "Küche TempSensor Batterie Level"
+  - platform: xiaomi_lywsd03mmc
+    mac_address: "A4:C1:38:AC:40:88"
+    bindkey: "eef418daf699a0c188f3bfd17e4565d9"
+    temperature:
+      name: "Bad Temperatur"
+    humidity:
+      name: "Bad Luftfeuchtigkeit"
+    battery_level:
+      name: "Bad TempSensor Batterie Level"
+  - platform: xiaomi_lywsd03mmc
+    mac_address: "A4:C1:38:33:6E:66"
+    bindkey: "eef418daf699a0c188f3bfd17e4565d9"
+    temperature:
+      name: "Elena Temperatur"
+    humidity:
+      name: "Elena Luftfeuchtigkeit"
+    battery_level:
+      name: "Elena TempSensor Batterie Level"
+  - platform: xiaomi_lywsd03mmc
+    mac_address: "A4:C1:38:81:79:7C"
+    bindkey: "eef418daf699a0c188f3bfd17e4565d9"
+    temperature:
+      name: "Wohzimmer Temperatur"
+    humidity:
+      name: "Wohzimmer Luftfeuchtigkeit"
+    battery_level:
+      name: "Wohnzimmer TempSensor Batterie Level"
+  - platform: xiaomi_lywsd03mmc
+    mac_address: "A4:C1:38:CF:BD:BE"
+    bindkey: "eef418daf699a0c188f3bfd17e4565d9"
+    temperature:
+      name: "Schlafzimmer Temperatur"
+    humidity:
+      name: "Schlafzimmer Luftfeuchtigkeit"
+    battery_level:
+      name: "Schlafzimmer TempSensor Batterie Level"
+  - platform: xiaomi_lywsd03mmc
+    mac_address: "A4:C1:38:EB:E5:FD"
+    bindkey: "eef418daf699a0c188f3bfd17e4565d9"
+    temperature:
+      name: "Tobias Temperatur"
+    humidity:
+      name: "Tobias Luftfeuchtigkeit"
+    battery_level:
+      name: "Tobias TempSensor Batterie Level"

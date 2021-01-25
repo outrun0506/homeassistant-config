@@ -217,3 +217,25 @@ switch.temp:
 script.netflix:
   friendly_name: Netflix starten
   icon: mdi:netflix
+sensor.wohzimmer_luftfeuchtigkeit:
+  device_class: humidity
+sensor.kuche_luftfeuchtigkeit:
+  device_class: humidity
+sensor.bad_luftfeuchtigkeit:
+  device_class: humidity
+sensor.eli_luftfeuchtigkeit:
+  device_class: humidity
+sensor.tobias_luftfeuchtigkeit:
+  device_class: humidity
+sensor.schlafzimmer_luftfeuchtigkeit:
+  device_class: humidity
+sensor.nibe_98885_43005:
+  unit_of_measurement: GM
+sensor.pws_precip_rate:
+  icon: mdi:beaker-question-outline
+sensor.pws_precip_total:
+  icon: mdi:beaker-outline
+sensor.pws_wind_speed:
+  icon: mdi:weather-windy
+sensor.pws_wind_gust:
+  icon: mdi:windsock

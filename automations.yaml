@@ -8,17 +8,6 @@
   - data:
       entity_id: input_boolean.power_living_room
     service: input_boolean.turn_on
-- id: '1570737706783'
-  alias: Power state on HA start-up
-  trigger:
-  - event: start
-    platform: homeassistant
-  condition: []
-  action:
-  - data:
-      payload: ' '
-      topic: sonoffs/cmnd/state
-    service: mqtt.publish
 - id: 3622e863-7639-4234-9cf8-5c0e0280e7ba
   alias: Schlafzimmer Licht Automatik Abend
   trigger:
@@ -69,6 +58,9 @@
   - data: {}
     entity_id: light.esstisch
     service: light.turn_off
+  - service: light.turn_off
+    data: {}
+    entity_id: light.hue_outdoor_wall_1
   mode: single
 - id: 77be005e-110a-41a5-9ffa-09c184193fd2
   alias: Schlafzimmer Licht Automatik Morgen
@@ -165,24 +157,13 @@
   - service: switch.turn_on
     entity_id: switch.waschmaschine_relay
   mode: single
-- id: 2bbc901c-f891-46b8-9779-f2205bae31a3
-  alias: Make Snapshot
-  trigger:
-  - platform: time
-    at: 03:00:00
-  condition: []
-  action:
-  - service: hassio.snapshot_full
-    data_template:
-      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
 - id: 47565c9e-ada8-4937-b065-a8c371601de0
   alias: washmachine_finished
   trigger:
   - platform: numeric_state
     entity_id: sensor.waschmaschine_leistung
     below: '10'
-    for:
-      minutes: 5
+    for: 0:05:00
   condition:
   - condition: state
     entity_id: input_boolean.waschmaschine_aktiv
@@ -304,3 +285,168 @@
       entity_id: lights.all
     service: light.turn_off
   mode: single
+- id: '1606050559012'
+  alias: Weihnachtsbeleuchtung ein
+  description: Weihnachtsbeleuchtung einschalten
+  trigger:
+  - platform: time
+    at: '17:30'
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    entity_id: switch.weihnachtsbeleuchtung_relay
+  mode: single
+- id: '1606050610750'
+  alias: Weichnachtsbeleuchtung aus
+  description: Schaltet die Weichnachtsbeleuchtung aus
+  trigger:
+  - platform: time
+    at: '21:00'
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.weihnachtsbeleuchtung_relay
+  mode: single
+- id: '1606502924060'
+  alias: Lueften nicht vergessen
+  description: ''
+  trigger:
+  - platform: time
+    at: '10:00:00'
+  - platform: time
+    at: '14:30:00'
+  condition: []
+  action:
+  - service: notify.alexa_media
+    data:
+      target:
+      - media_player.esszimmer
+      - media_player.kuche
+      - media_player.wohzimmer
+      title: Die Wäsche ist fertig
+      message: Vergiss nicht zu lüften.
+      data:
+        method: all
+        type: announce
+  mode: single
+- id: '1609144738492'
+  alias: Play Spotify in the Morning
+  description: Plays a fixed, but dynamic Playlist Spotify in the morning
+  trigger:
+  - platform: time
+    at: 09:00:00
+  condition: []
+  action:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.15
+    entity_id: media_player.essbereich
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.spotify_lukas
+      media_content_id: https://open.spotify.com/playlist/3ZXgf2Z183nYjBl342tyd0
+      media_content_type: playlist
+  mode: single
+- id: '1609242378170'
+  alias: BathTurnOnMotion
+  description: Turns on the Bath Lights if Motion is detected an LX is under 10
+  use_blueprint:
+    path: pavax/motion_aware_lights.yaml
+    input:
+      illuminance_threshold: '10'
+      motion_sensor: binary_sensor.motion_bad_motion
+      no_motion_wait: '420'
+      illuminance_sensor: sensor.motion_bad_light_level
+      target_light:
+        entity_id: light.bad
+- id: '1609259508677'
+  alias: OutdoorTurnOnMotion
+  description: Turns on the Outdoor Lights if Motion is detected an LX is under 10
+  use_blueprint:
+    path: pavax/motion_aware_lights.yaml
+    input:
+      motion_sensor: binary_sensor.hue_outdoor_motion_sensor_1_motion
+      illuminance_sensor: sensor.hue_outdoor_motion_sensor_1_light_level
+      no_motion_wait: '150'
+      illuminance_threshold: '30'
+      target_light:
+        entity_id: light.hue_outdoor_wall_1
+- id: '1609259582484'
+  alias: ZubauTurnOnMotion
+  description: Turns on the Zubau Lights if Motion is detected an LX is under 10
+  use_blueprint:
+    path: pavax/motion_aware_lights.yaml
+    input:
+      illuminance_threshold: '10'
+      motion_sensor: binary_sensor.motion_zubau_motion
+      illuminance_sensor: sensor.motion_zubau_light_level
+      target_light:
+        entity_id: light.zubau
+- id: '1609259645348'
+  alias: VorhausTurnOnMotion
+  description: Turns on the Outdoor Lights if Motion is detected an LX is under 10
+  use_blueprint:
+    path: pavax/motion_aware_lights.yaml
+    input:
+      illuminance_threshold: '10'
+      motion_sensor: binary_sensor.motion_vorhaus_motion
+      illuminance_sensor: sensor.motion_vorhaus_light_level
+      target_light:
+        entity_id: light.vorhaus
+- id: '1609259716200'
+  alias: BasementTurnOnMotion
+  description: Turns on the Outdoor Lights if Motion is detected an LX is under 10
+  use_blueprint:
+    path: pavax/motion_aware_lights.yaml
+    input:
+      illuminance_threshold: '50'
+      motion_sensor: binary_sensor.motion_keller_motion
+      no_motion_wait: '300'
+      illuminance_sensor: sensor.motion_keller_light_level
+      target_light:
+        entity_id:
+        - light.keller_1
+        - light.keller_2
+        - light.kellertreppe
+        - light.keller_3
+- id: '1609339365291'
+  alias: GoodNight Elena
+  description: Schaltet die Lampe bei Eli mit einer Transition von 1 Stunde
+  trigger:
+  - device_id: a7358118e58c46c19442aa2d1cb72cc4
+    domain: hue
+    platform: device
+    type: remote_button_long_release
+    subtype: turn_on
+  condition: []
+  action:
+  - service: light.turn_off
+    data:
+      transition: 3600
+    entity_id: light.eli
+  mode: single
+- id: '1609342877715'
+  alias: NasOnat20:30
+  description: Power On NAS at 20:30 for Backup
+  trigger:
+  - platform: time
+    at: '20:30:00'
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.nas
+  mode: single
+- id: '1610129606236'
+  alias: Low battery level detection & notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: Sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      time: '19:15:00'
+      actions:
+      - service: notify.mobile_app_lukasoneplus
+        data:
+          message: 'Low battery warning for: {{sensors}}'
+      day: '0'

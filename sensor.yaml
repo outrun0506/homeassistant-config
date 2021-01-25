@@ -5,3 +5,115 @@
     - type: memory_free
     - type: processor_use
     - type: last_boot
+
+- platform: rest
+  resource: http://192.168.0.102/rest
+  name: 'AMIS Zählerstand Gesamt'
+  value_template: "{{ value_json['1.8.0'] / 1000 }}"
+  unit_of_measurement: "kWh"
+  device_class: energy
+  force_update: true
+
+- platform: rest
+  resource: http://192.168.0.102/rest
+  name: 'AMIS Aktueller Verbrauch'
+  value_template: "{{ (value_json['1.7.0'] / 1000) | round(2) }}"
+  unit_of_measurement: "kW"
+  device_class: energy
+  force_update: true
+
+- platform: moon
+
+- platform: rest
+  name: pws_report
+  json_attributes:
+    - observations
+  value_template: '{{ value_json["observations"][0]["obsTimeLocal"].title() }}'
+  resource: !secret wunderground_url
+  scan_interval: 300
+
+- platform: rest
+  name: pws_forecast
+  json_attributes:
+    - daypart 
+  value_template: 'OK'
+  resource: !secret wunderground_forecast
+  scan_interval: 300
+
+- platform: template
+  sensors:
+
+  # PWS Current Conditions
+    pws_location: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].neighborhood }}'
+      friendly_name: Ort
+    pws_station_id: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].stationID }}'
+      friendly_name: Station ID
+    pws_wind_dir: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].winddir }}'
+      friendly_name: Wind Richtung
+      unit_of_measurement: "°"
+    pws_wind_gust: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].metric.windGust }}'  
+      friendly_name:  Wind Spitzen
+      unit_of_measurement: "KMh"
+    pws_wind_speed: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].metric.windSpeed }}'
+      friendly_name: Wind Geschwindigkeit
+      unit_of_measurement: "KMh"
+    pws_humidity: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].humidity }}'
+      friendly_name: Luftfeutigkeit
+      unit_of_measurement: "%"
+      device_class: humidity
+    pws_precip_total: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].metric.precipTotal }}'
+      friendly_name: Regen Total
+      unit_of_measurement: "mm"
+    pws_precip_rate: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].metric.precipRate }}'
+      friendly_name: Regen Prognose
+      unit_of_measurement: "mm"
+    pws_temp: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].metric.temp }}'
+      friendly_name: Temperatur
+      unit_of_measurement: "°C"
+      device_class: temperature
+    pws_pressure: 
+      value_template: '{{ states.sensor.pws_report.attributes.observations[0].metric.pressure }}'
+      friendly_name: Luftdruck
+      unit_of_measurement: "HPa"
+      device_class: pressure
+    
+    # PWS Forecast
+    pws_forecast_1d:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[0] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[0] }}'
+      friendly_name: Wettervorhersage Heute
+    pws_forecast_1n:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[1] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[1] }}'
+      friendly_name: Wettervorhersage Heutenacht
+    pws_forecast_2d:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[2] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[2] }}'
+      friendly_name: Wettervorhersage Morgen
+    pws_forecast_2n:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[3] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[3] }}'
+      friendly_name: Wettervorhersage Mogennacht
+    pws_forecast_3d:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[4] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[4] }}'
+      friendly_name: Wettervorhersage 3D
+    pws_forecast_3n:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[5] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[5] }}'
+      friendly_name: Wettervorhersage 3N
+    pws_forecast_4d:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[6] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[6] }}'
+      friendly_name: Wettervorhersage 4D
+    pws_forecast_4n:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[7] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[7] }}'
+      friendly_name: Wettervorhersage 4N
+    pws_forecast_5d:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[8] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[8] }}'
+      friendly_name: Wettervorhersage 5D
+    pws_forecast_5n:
+      value_template: '{{ states.sensor.pws_forecast.attributes.daypart[0].daypartName[9] ~ ": " ~ states.sensor.pws_forecast.attributes.daypart[0].narrative[9] }}'
+      friendly_name: Wettervorhersage 5N

@@ -11,12 +11,6 @@
         "media_content_type": null,
         "locked": false
     },
-    "CUSA17714": {
-        "media_title": "Fall Guys: Ultimate Knockout",
-        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP3643-CUSA17714_00-FALLGUYSPS4EU000/1603690299000/image",
-        "media_content_type": "game",
-        "locked": false
-    },
     "CUSA01836": {
         "media_title": "Deus Ex: Mankind Divided",
         "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP0082-CUSA01836_00-DXMANKINDIVIDED0/1603425255000/image",
@@ -35,14 +29,86 @@
         "media_content_type": "game",
         "locked": false
     },
-    "CUSA00031": {
-        "media_title": "Rayman Legends",
-        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP0001-CUSA00031_00-RAYMANLEGENDS001/1603727114000/image",
+    "CUSA01129": {
+        "media_title": "RaceTheSun",
+        "media_image_url": null,
+        "media_content_type": null,
+        "locked": false
+    },
+    "NPXS21021": {
+        "media_title": "PS5 Remote Play",
+        "media_image_url": null,
+        "media_content_type": null,
+        "locked": false
+    },
+    "CUSA02591": {
+        "media_title": "Kung Fu Panda: Showdown der Legenden",
+        "media_image_url": null,
+        "media_content_type": null,
+        "locked": false
+    },
+    "CUSA01869": {
+        "media_title": "Extreme Exorcism",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP4337-CUSA01869_00-EECROSSBUY000001/1605777379000/image",
         "media_content_type": "game",
         "locked": false
     },
-    "CUSA01129": {
-        "media_title": "RaceTheSun",
+    "CUSA02396": {
+        "media_title": "Die Eisk\u00f6nigin - V\u00f6llig Unverfroren Free Fall: Schneeballschlacht",
+        "media_image_url": null,
+        "media_content_type": null,
+        "locked": false
+    },
+    "CUSA01841": {
+        "media_title": "Flame Over",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP4132-CUSA01841_00-FLAMEOVERLLJ2015/1606495560000/image",
+        "media_content_type": "game",
+        "locked": false
+    },
+    "CUSA02900": {
+        "media_title": "Grow Home",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP0001-CUSA02900_00-GROWHOMEPS4SCEE0/1607434807000/image",
+        "media_content_type": "game",
+        "locked": false
+    },
+    "CUSA00063": {
+        "media_title": "LittleBigPlanet\u2122 3",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP9000-CUSA00063_00-GLITTLEBIG000003/1607532772000/image",
+        "media_content_type": "game",
+        "locked": false
+    },
+    "CUSA00824": {
+        "media_title": "Worms\u2122 Battlegrounds",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP4064-CUSA00824_00-WORMSBGS00000000/1607511017000/image",
+        "media_content_type": "game",
+        "locked": false
+    },
+    "CUSA05986": {
+        "media_title": "Need for Speed\u2122 Payback",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP0006-CUSA05986_00-NFS1800000000001/1608154530000/image",
+        "media_content_type": "game",
+        "locked": false
+    },
+    "CUSA01294": {
+        "media_title": "BADLAND: Game of the Year Edition",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP4530-CUSA01294_00-GOTYEDITIOBUNDLE/1608628061000/image",
+        "media_content_type": "game",
+        "locked": false
+    },
+    "CUSA01400": {
+        "media_title": "Magicka 2",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP4139-CUSA01400_00-MAMA02GP40000001/1608561691000/image",
+        "media_content_type": "game",
+        "locked": false
+    },
+    "CUSA17714": {
+        "media_title": "Fall Guys: Ultimate Knockout",
+        "media_image_url": "https://store.playstation.com/store/api/chihiro/00_09_000/container/AT/de/19/EP3643-CUSA17714_00-FALLGUYSPS4EU000/1608628404000/image",
+        "media_content_type": "game",
+        "locked": false
+    },
+    "CUSA00031": {
+        "media_title": "Rayman\u00ae Legends",
         "media_image_url": null,
         "media_content_type": null,
         "locked": false

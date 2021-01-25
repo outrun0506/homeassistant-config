@@ -15,19 +15,26 @@ captive_portal:
 api:
 
 logger:
-
+  baud_rate: 0
 ota:
 
-uart:
-  rx_pin: RX
-  baud_rate: 4800
+#uart:
+#  rx_pin: RX
+#  baud_rate: 4800
 
 sensor:
-  - platform: cse7766
+  - platform: hlw8012
+    sel_pin: 5
+    cf_pin: 14
+    cf1_pin: 13
     current:
       name: "Waschmaschine Ampere"
     voltage:
       name: "Waschmaschine Spannung"
+      filters:
+        - calibrate_linear:
+          - 0.0 -> 0.0
+          - 202.87440 -> 230.01
     power:
       name: "Waschmaschine Leistung"
     update_interval: 15s

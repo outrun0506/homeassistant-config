@@ -1,0 +1,103 @@
+blueprint:
+  name: Motion Aware Lights Toggling
+  description: 'Turn a light on and off based on detected motion but only if certain
+    criteria a matched provided by a Illuminance-Sensor or a Binary-Sensor.   Also
+    allows to disable motion aware lights. This might be useful for example if a person
+    is in the bed or a movie is playing.
+
+    '
+  domain: automation
+  source_url: https://gist.github.com/pavax/ce9559c428b9a3c369ce79ef215ef1e2
+  input:
+    motion_sensor:
+      name: Motion Sensor
+      description: This sensor will be synchronized with the light.
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: motion
+    no_motion_wait:
+      name: Wait time
+      description: Time to wait until the light should be turned off.
+      default: 120
+      selector:
+        number:
+          min: 0.0
+          max: 3600.0
+          unit_of_measurement: seconds
+          mode: slider
+          step: 1.0
+    illuminance_sensor:
+      name: Illuminance Sensor (Optional)
+      description: Sensor that decides if lights should be turned on based on the
+        illuminance.
+      default:
+      selector:
+        entity:
+          domain: sensor
+          device_class: illuminance
+    illuminance_threshold:
+      name: Illumincance Threshold (Optional)
+      description: Defines the illumincance threshold below which the lights should
+        turn on.
+      default: 300
+      selector:
+        number:
+          min: 0.0
+          max: 100000.0
+          unit_of_measurement: lux
+          mode: slider
+          step: 1.0
+    binary_sensor_entity:
+      name: Binary Sensor (Optional)
+      description: Binary Sensor that decides if lights should be turned on - state
+        on is turn on lights.
+      default:
+      selector:
+        entity:
+          domain: binary_sensor
+    disabled_entity_id:
+      name: Disabled Mode (Optional)
+      description: Binary Sensor that decides if lights shall not be interacted with
+        - state on is do not turn on lights.
+      default:
+      selector:
+        entity:
+          domain: binary_sensor
+    target_light:
+      name: Light
+      description: The lights to keep in sync.
+      selector:
+        target:
+          entity:
+            domain: light
+mode: restart
+max_exceeded: silent
+trigger:
+- platform: state
+  entity_id: !input 'motion_sensor'
+  to: 'on'
+variables:
+  illuminance_sensor: !input 'illuminance_sensor'
+  illuminance_threshold: !input 'illuminance_threshold'
+  binary_sensor_entity: !input 'binary_sensor_entity'
+  disabled_entity_id: !input 'disabled_entity_id'
+condition:
+- '{{ disabled_entity_id == None or is_state(disabled_entity_id, ''off'') }}'
+- '{{ trigger.to_state.state == ''on'' }}'
+- condition: or
+  conditions:
+  - '{{ binary_sensor_entity != None and is_state(binary_sensor_entity, ''on'' ) }}'
+  - '{{ illuminance_sensor != None and states(illuminance_sensor)|int  <  illuminance_threshold|int
+    }}'
+action:
+- service: light.turn_on
+  target: !input 'target_light'
+- wait_for_trigger:
+    platform: state
+    entity_id: !input 'motion_sensor'
+    from: 'on'
+    to: 'off'
+- delay: !input 'no_motion_wait'
+- service: light.turn_off
+  target: !input 'target_light'

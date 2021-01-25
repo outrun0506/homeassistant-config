@@ -14,7 +14,7 @@ updater:
 cloud:
 map:
 recorder:
-  purge_keep_days: 14
+  purge_keep_days: 1095
 discovery:
 history:
 logbook:
@@ -42,9 +42,6 @@ tts:
   - platform: google_translate
     service_name: google_say
     language: 'de'
-neato:
-  username: !secret neato_username
-  password: !secret neato_password
 weather:
   - platform: openweathermap
     api_key: !secret openweather_api
@@ -58,7 +55,32 @@ lock:
   token: !secret nuki_token
 scene: !include scenes.yaml
 nibe:
+  systems:
+    - system: "98885"
+      units:
+        - unit: 0
+          categories: true
+          statuses: true
+        - unit: 1
+          categories: true
+          statuses: true
+      climates: true
+      water_heaters: true
+      fans: false
+#      sensors:
+#        - 47264
+#        - 47265
+#        - 10001
+#        - fan_speed
 spotify:
   client_id: !secret spotify_clientid
   client_secret: !secret spotify_clientsecret
+influxdb:
+  host: a0d7b954-influxdb
+  port: 8086
+  database: !secret influxdbname
+  username: !secret influxuser
+  password: !secret influxpassword
+  max_retries: 3
+  default_measurement: state
 #END
